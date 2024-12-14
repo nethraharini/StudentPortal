@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+    <link rel="shortcut icon" href="./images/logo.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo" title="Students portal CIT">
+            <img src="src/cit.jpg" alt="">
+            <h2>StudentBridge</h2>
+        </div>
+        <div class="navbar">
+            <a href="index.html" class="active">
+                <span class="material-icons-sharp">home</span>
+                <h3>Home</h3>
+            </a>
+            <a href="timetable.html">
+                <span class="material-icons-sharp">today</span>
+                <h3>Time Table</h3>
+            </a>
+            <a href="attendance.html">
+                <span class="material-icons-sharp">check_circle</span>
+                <h3>Attendance</h3>
+            </a>
+            <a href="exam.html">
+                <span class="material-icons-sharp">grid_view</span>
+                <h3>Examination</h3>
+            </a>
+            <a href="marks.html">
+                <span class="material-icons-sharp">assessment</span>
+                <h3>Marks</h3>
+            </a>
+            <a href="announcement.html">
+                <span class="material-icons-sharp">announcement</span>
+                <h3>Announcements</h3>
+            </a>
+            <a href="#">
+                <span class="material-icons-sharp">logout</span>
+                <h3>Logout</h3>
+            </a>
+        </div>
+        <div id="profile-btn">
+            <span class="material-icons-sharp">person</span>
+        </div>
+        <div class="theme-toggler">
+            <span class="material-icons-sharp active">light_mode</span>
+            <span class="material-icons-sharp">dark_mode</span>
+        </div>
+    </header>
+    <div class="container">
+        <aside>
+            <div class="profile">
+                <div class="top">
+                    <div class="profile-photo">
+                        <img src="./images/profile-1.jpg" alt="">
+                    </div>
+                    <div class="info">
+                        <p>Hey, <b>Sri</b></p>
+                        <small class="text-muted">2403717662222040</small>
+                    </div>
+                </div>
+                <div class="about">
+                    <h5>Course</h5>
+                    <p>MCA-Master of Computer Application</p>
+                    <h5>DOB</h5>
+                    <p>21-08-2003</p>
+                    <h5>Contact</h5>
+                    <p>9025122027</p>
+                    <h5>Email</h5>
+                    <p>2403717662222040@cit.edu.in</p>
+                    <h5>Address</h5>
+                    <p>Coimbatore</p>
+                </div>
+            </div>
+        </aside>
+        <main>
+            <<div class="timetable" id="timetable">
+                <div>
+                    <span id="prevDay">&lt;</span>
+                    <h2>Today's Timetable</h2>
+                    <span id="nextDay">&gt;</span>
+                </div>
+                <span class="closeBtn" onclick="timeTableAll()">X</span>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Time</th>
+                            <th>Room No.</th>
+                            <th>Subject</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+        </main>
+        <div class="right">
+            <div class="announcements">
+                <h2>Announcements</h2>
+                <div class="updates">
+                    <div class="message">
+                        <p><b>Academic</b> Summer training internship with Live Projects.</p>
+                        <small class="text-muted">2 Minutes Ago</small>
+                    </div>
+                    <div class="message">
+                        <p><b>Co-curricular</b> Global internship opportunity by Student organization.</p>
+                        <small class="text-muted">10 Minutes Ago</small>
+                    </div>
+                    <div class="message">
+                        <p><b>Examination</b> Instructions for Mid Term Examination.</p>
+                        <small class="text-muted">Yesterday</small>
+                    </div>
+                </div>
+            </div>
+            <div class="upcoming_exams">
+                <h2>Upcoming Exams</h2>
+                <div class="exam">
+                    <!-- Content for Exam 1 (you can add details here) -->
+                </div>
+                <div class="exam">
+                    <!-- Content for Exam 2 (you can add details here) -->
+                </div>
+                <div class="exam">
+                    <!-- Content for Exam 3 (you can add details here) -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            fetch('timetable.html')
+                .then(response => response.text())
+                .then(data => {
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(data, 'text/html');
+                    const bodyContent = doc.querySelector('body').innerHTML;
+                    document.getElementById('timetable-container').innerHTML = bodyContent;
+                })
+                .catch(error => console.error('Error fetching timetable:', error));
+        });
+    </script>
+    <script src="timetable.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

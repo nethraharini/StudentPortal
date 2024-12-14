@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance</title>
+    <link rel="shortcut icon" href="./images/logo.png">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+        <header>
+            <div class="logo" title="Students portal CIT">
+                <img src="src/cit.jpg" alt="">
+                <h2>StudentBridge</h2>
+            </div>
+            <div class="navbar">
+                <a href="index.html" class="active">
+                    <span class="material-icons-sharp">home</span>
+                    <h3>Home</h3>
+                </a>
+                <a href="timetable.html">
+                    <span class="material-icons-sharp">today</span>
+                    <h3>Time Table</h3>
+                </a>
+                <a href="attendance.html">
+                    <span class="material-icons-sharp">check_circle</span>
+                    <h3>Attendance</h3>
+                </a>
+                <a href="exam.html">
+                    <span class="material-icons-sharp">grid_view</span>
+                    <h3>Examination</h3>
+                </a>
+                <a href="marks.html">
+                    <span class="material-icons-sharp">assessment</span>
+                    <h3>Marks</h3>
+                </a>
+                <a href="announcement.html">
+                    <span class="material-icons-sharp">announcement</span>
+                    <h3>Announcements</h3>
+                </a>
+                <a href="#">
+                    <span class="material-icons-sharp">logout</span>
+                    <h3>Logout</h3>
+                </a>
+            </div>
+            <div id="profile-btn">
+                <span class="material-icons-sharp">person</span>
+            </div>
+            <div class="theme-toggler">
+                <span class="material-icons-sharp active">light_mode</span>
+                <span class="material-icons-sharp">dark_mode</span>
+            </div>
+        </header>
+        <main>
+            <div>
+                <h1>Attendance</h1>
+            </div>
+            <table>
+                <div class="subjects">
+                    <div class="eg">
+                        <span class="material-icons-sharp">architecture</span>
+                        <h3>Operating System</h3>
+                        <h2>12/14</h2>
+                        <div class="progress">
+                            <svg><circle cx="38" cy="38" r="36"></circle></svg>
+                            <div class="number"><p>86%</p></div>
+                        </div>
+                        <small class="text-muted">Last 24 Hours</small>
+                    </div>
+                    <div class="mth">
+                        <span class="material-icons-sharp">functions</span>
+                        <h3>Maths</h3>
+                        <h2>27/29</h2>
+                        <div class="progress">
+                            <svg><circle cx="38" cy="38" r="36"></circle></svg>
+                            <div class="number"><p>93%</p></div>
+                        </div>
+                        <small class="text-muted">Last 24 Hours</small>
+                    </div>
+                    <div class="cs">
+                        <span class="material-icons-sharp">computer</span>
+                        <h3>Data structures</h3>
+                        <h2>27/30</h2>
+                        <div class="progress">
+                            <svg><circle cx="38" cy="38" r="36"></circle></svg>
+                            <div class="number"><p>81%</p></div>
+                        </div>
+                        <small class="text-muted">Last 24 Hours</small>
+                    </div>
+                    <div class="cg">
+                        <span class="material-icons-sharp">dns</span>
+                        <h3>Database Management Systems</h3>
+                        <h2>24/25</h2>
+                        <div class="progress">
+                            <svg><circle cx="38" cy="38" r="36"></circle></svg>
+                            <div class="number"><p>96%</p></div>
+                        </div>
+                        <small class="text-muted">Last 24 Hours</small>
+                    </div>
+                    <div class="net">
+                        <span class="material-icons-sharp">code</span>
+                        <h3>Java</h3>
+                        <h2>25/27</h2>
+                        <div class="progress">
+                            <svg><circle cx="38" cy="38" r="36"></circle></svg>
+                            <div class="number"><p>92%</p></div>
+                        </div>
+                        <small class="text-muted">Last 24 Hours</small>
+                    </div>
+                </div>
+
+            </table>
+
+        </main>
+    
+        
+    <script src="app.js"></script>
+</body>
+</html>
