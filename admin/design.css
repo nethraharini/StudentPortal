@@ -1,0 +1,98 @@
+/* General Body Styling */
+body {
+    font-family:'Times New Roman', Times, serif ;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Admin Action Container */
+.admin-action-container {
+    text-align: center;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 70%;
+    max-width: 600px;
+    opacity: 0;
+    animation: fadeIn 1s ease-out forwards;
+}
+
+/* Heading Style */
+h2 {
+    font-size: 32px;
+    margin-bottom: 30px;
+    color: #333;
+    animation: slideInFromTop 0.8s ease-out forwards;
+}
+
+/* Button Styling */
+button {
+    background-color: #1a1a1a;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    margin: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    opacity: 0;
+    animation: fadeInButton 1s ease-out forwards;
+}
+
+/* Stagger Button Animations */
+button:nth-child(1) {
+    animation-delay: 0.5s;
+}
+
+button:nth-child(2) {
+    animation-delay: 0.7s;
+}
+
+button:nth-child(3) {
+    animation-delay: 0.9s;
+}
+
+/* Button Hover Effect */
+button:hover {
+    background-color: #404240;
+    transform: scale(1.05);
+}
+
+/* Fade-in Animation for the container */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Slide-in Animation for Heading */
+@keyframes slideInFromTop {
+    0% {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Fade-in Animation for Buttons */
+@keyframes fadeInButton {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
