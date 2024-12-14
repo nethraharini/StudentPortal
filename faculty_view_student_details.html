@@ -1,0 +1,141 @@
+<!-- view_student_details.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Student Details</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333333;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+        }
+        input[type="text"],
+        input[type="number"],
+        select {
+            padding: 10px;
+            font-size: 14px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            width: 100%;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 14px;
+            background-color: #4CAF50;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>View Student Details</h1>
+        <form id="student-details-form" onsubmit="updateStudentDetails(event)">
+            <div class="form-group">
+                <label for="student-id">Student ID</label>
+                <input type="text" id="student-id" name="student-id" readonly>
+            </div>
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name">
+            </div>
+            <div class="form-group">
+                <label for="department">Department</label>
+                <select id="department" name="department">
+                    <option value="math">Math</option>
+                    <option value="java">Java</option>
+                    <option value="python">Python</option>
+                    <option value="dsa">DSA</option>
+                    <option value="dbms">DBMS</option>
+                    <option value="os">OS</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="year">Year</label>
+                <input type="number" id="year" name="year">
+            </div>
+            <div class="form-group">
+                <label for="attendance">Attendance</label>
+                <input type="number" id="attendance" name="attendance">
+            </div>
+            <div class="form-group">
+                <label for="marks">Marks</label>
+                <input type="number" id="marks" name="marks">
+            </div>
+            <button type="submit">Save Changes</button>
+        </form>
+    </div>
+
+    <script>
+        function getStudentDetails(studentId) {
+            // Function to fetch student details (mock data for demonstration)
+            const students = [
+                { id: '001', name: 'John Doe', department: 'Math', year: 2, attendance: 95, marks: 85 },
+                { id: '002', name: 'Jane Smith', department: 'Java', year: 3, attendance: 88, marks: 92 },
+                { id: '003', name: 'Alex Johnson', department: 'Python', year: 1, attendance: 90, marks: 87 },
+                // more students
+            ];
+
+            const student = students.find(student => student.id === studentId);
+            if (student) {
+                document.getElementById('student-id').value = student.id;
+                document.getElementById('name').value = student.name;
+                document.getElementById('department').value = student.department;
+                document.getElementById('year').value = student.year;
+                document.getElementById('attendance').value = student.attendance;
+                document.getElementById('marks').value = student.marks;
+            }
+        }
+
+        function updateStudentDetails(event) {
+            event.preventDefault();
+
+            const studentId = document.getElementById('student-id').value;
+            const name = document.getElementById('name').value;
+            const department = document.getElementById('department').value;
+            const year = document.getElementById('year').value;
+            const attendance = document.getElementById('attendance').value;
+            const marks = document.getElementById('marks').value;
+
+            // Save updated student details to database (mock function call)
+            console.log('Updated Student Details:', { studentId, name, department, year, attendance, marks });
+
+            alert('Student details updated successfully!');
+        }
+
+        // Assuming student ID is passed via URL parameters (for demonstration)
+        const studentId = new URLSearchParams(window.location.search).get('id');
+        if (studentId) {
+            getStudentDetails(studentId);
+        }
+    </script>
+</body>
+</html>

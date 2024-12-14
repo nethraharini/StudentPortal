@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mark Attendance</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333333;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        label {
+            font-size: 14px;
+            color: #333333;
+        }
+        input[type="date"], select, input[type="checkbox"] {
+            padding: 10px;
+            font-size: 14px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .students-list {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        .student {
+            display: flex;
+            align-items: center;
+        }
+        .student input[type="checkbox"] {
+            margin-right: 10px;
+        }
+        button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Mark Attendance</h1>
+        <form action="submit_attendance.php" method="post">
+            <label for="attendance_date">Date:</label>
+            <input type="date" id="attendance_date" name="attendance_date" required>
+
+            <label for="attendance_subject">Subject:</label>
+            <select id="attendance_subject" name="attendance_subject" required>
+                <option value="math">Math</option>
+                <option value="Java">Java</option>
+                <option value="Python">Python</option>
+                <option value="DSA">DSA</option>
+                <option value="DBMS">DBMS</option>
+                <option value="OS">OS</option>
+                <!-- Add more subjects as needed -->
+            </select>
+
+            <label>Students Present:</label>
+            <div class="students-list">
+                <!-- Example student checkboxes, this could be dynamically generated from a database in a real scenario -->
+                <div class="student">
+                    <input type="checkbox" id="student1" name="students[]" value="student1">
+                    <label for="student1">Student 1</label>
+                </div>
+                <div class="student">
+                    <input type="checkbox" id="student2" name="students[]" value="student2">
+                    <label for="student2">Student 2</label>
+                </div>
+                <div class="student">
+                    <input type="checkbox" id="student3" name="students[]" value="student3">
+                    <label for="student3">Student 3</label>
+                </div>
+                <!-- More students as necessary -->
+            </div>
+
+            <button type="submit">Mark Attendance</button>
+        </form>
+    </div>
+</body>
+</html>

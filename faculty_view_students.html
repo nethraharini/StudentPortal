@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Department Students</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333333;
+        }
+        .search-bar {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        input[type="text"] {
+            padding: 10px;
+            font-size: 14px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            width: calc(100% - 100px);
+        }
+        select {
+            padding: 10px;
+            font-size: 14px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background-color: #4CAF50;
+            color: #ffffff;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>View Department Students</h1>
+        <div class="search-bar">
+            <input type="text" id="search-name" placeholder="Search by Name" onkeyup="filterStudents()">
+            <select id="filter-department" onchange="filterStudents()">
+                <option value="">Filter by Department</option>
+                <option value="math">Math</option>
+                <option value="java">Java</option>
+                <option value="python">Python</option>
+                <option value="dsa">DSA</option>
+                <option value="dbms">DBMS</option>
+                <option value="os">OS</option>
+                <!-- Add more departments as needed -->
+            </select>
+        </div>
+        <table id="students-table">
+            <thead>
+                <tr>
+                    <th>Student ID</th>
+                    <th>Name</th>
+                    <th>Department</th>
+                    <th>Year</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Example data -->
+                <tr>
+                    <td>001</td>
+                    <td>John Doe</td>
+                    <td>Math</td>
+                    <td>2nd Year</td>
+                    <td><a href="faculty_view_student_details.html">View Details</a></td>
+                </tr>
+                <tr>
+                    <td>002</td>
+                    <td>Jane Smith</td>
+                    <td>Java</td>
+                    <td>3rd Year</td>
+                    <td><a href="faculty_view_student_details.html">View Details</a></td>
+                </tr>
+                <tr>
+                    <td>003</td>
+                    <td>Alex Johnson</td>
+                    <td>Python</td>
+                    <td>1st Year</td>
+                    <td><a href="faculty_view_student_details.html">View Details</a></td>
+                </tr>
+                <tr>
+                    <td>004</td>
+                    <td>Emily Davis</td>
+                    <td>DSA</td>
+                    <td>2nd Year</td>
+                    <td><a href="faculty_view_student_details.html">View Details</a></td>
+                </tr>
+                <tr>
+                    <td>005</td>
+                    <td>Michael Brown</td>
+                    <td>DBMS</td>
+                    <td>3rd Year</td>
+                    <td><a href="faculty_view_student_details.html">View Details</a></td>
+                </tr>
+                <tr>
+                    <td>006</td>
+                    <td>Sarah Wilson</td>
+                    <td>OS</td>
+                    <td>1st Year</td>
+                    <td><a href="faculty_view_student_details.html">View Details</a></td>
+                </tr>
+                <!-- More student rows as needed -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        function filterStudents() {
+            var nameInput = document.getElementById('search-name').value.toLowerCase();
+            var departmentSelect = document.getElementById('filter-department').value;
+            var table = document.getElementById('students-table');
+            var rows = table.getElementsByTagName('tr');
+
+            for (var i = 1; i < rows.length; i++) {
+                var nameCell = rows[i].getElementsByTagName('td')[1];
+                var departmentCell = rows[i].getElementsByTagName('td')[2];
+
+                if (nameCell && departmentCell) {
+                    var nameText = nameCell.textContent.toLowerCase();
+                    var departmentText = departmentCell.textContent;
+
+                    if ((nameText.indexOf(nameInput) > -1) && (departmentText.indexOf(departmentSelect) > -1 || departmentSelect === '')) {
+                        rows[i].style.display = '';
+                    } else {
+                        rows[i].style.display = 'none';
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>

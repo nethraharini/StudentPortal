@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add/Update Marks</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333333;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        label {
+            font-size: 14px;
+            color: #333333;
+        }
+        input[type="text"], select {
+            padding: 10px;
+            font-size: 14px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Add/Update Marks (CAT, Midsem, Semester)</h1>
+        <form action="submit_marks.php" method="post">
+            <label for="student_id">Student ID:</label>
+            <input type="text" id="student_id" name="student_id" required>
+
+            <label for="cat_marks">CAT Marks:</label>
+            <input type="text" id="cat_marks" name="cat_marks" required>
+
+            <label for="midsem_marks">Midsem Marks:</label>
+            <input type="text" id="midsem_marks" name="midsem_marks" required>
+
+            <label for="semester_marks">Semester Marks:</label>
+            <input type="text" id="semester_marks" name="semester_marks" required>
+
+            <button type="submit">Update Marks</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!-- faculty.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faculty Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .dashboard {
+            width: 80%;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333333;
+        }
+        .nav-links {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .nav-links a {
+            padding: 10px;
+            text-decoration: none;
+            color: #ffffff;
+            background-color: #4CAF50;
+            text-align: center;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        .nav-links a:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <h1>Faculty Dashboard</h1>
+        <div class="nav-links">
+            <a href="faculty_post_announcements.html">Post Announcements</a>
+            <a href="faculty_add_update_marks.html">Add/Update Marks (CAT, Midsem, Semester)</a>
+            <a href="faculty_marksattendance.html">Mark Attendance</a>
+            <a href="faculty_view_students.html">View Department Students</a>
+        </div>
+    </div>
+</body>
+</html>
