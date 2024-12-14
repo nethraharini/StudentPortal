@@ -1,0 +1,166 @@
+/* General Body and Background */
+body {
+    font-family:'Times New Roman', Times, serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: url('pic9.avif'); /* Add background image URL here */
+    background-size: cover; /* Ensure the image covers the entire viewport */
+    background-position: center; /* Center the background image */
+    background-attachment: fixed; /* Fix the image during scroll */
+    background-repeat: no-repeat; /* Prevent image repetition */
+    animation: gradientAnimation 15s ease infinite; /* Animated gradient (optional) */
+    position: relative; /* To ensure the text can be absolutely centered */
+}
+
+/* Welcome Text Styling */
+.welcome-text {
+    position: absolute; /* Positioning it relative to the body */
+    font-size: 40px;
+    color: rgb(13, 12, 12);
+    font-weight: bold;
+    text-align: center;
+    animation: fadeIn 2s ease-out; /* Fade-in effect */
+    z-index: 1; /* Ensures it stays above the background */
+}
+
+/* Dashboard Container */
+.dashboard-container {
+    font-family:'Times New Roman', Times, serif;
+    justify-content: center;
+}
+
+/* Heading Style */
+h2 {
+    font-size: 30px;
+    margin-bottom: 20px;
+    color: #0c0c0c;
+    animation: slideIn 0.8s ease-out;
+}
+
+/* Card Container */
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+/* Card Styling */
+.card {
+    /* Transparent light color */
+    padding: 20px;
+    width: 200px;
+    height: 250px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 8px 3px rgba(33, 31, 33, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    opacity: 0;
+    animation: fadeInCard 0.5s ease-out forwards;
+}
+
+/* Card Hover Effect */
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 14px rgba(232, 211, 211, 0.15);
+}
+
+/* Card Text */
+.card h3 {
+    font-size: 20px;
+    color: #100e0e;
+    margin-bottom: 15px;
+}
+
+.card p {
+    font-size: 14px;
+    margin-bottom: 15px;
+    color: #0c0c0c;
+}
+
+/* Card Button */
+.card button {
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    background-color: hsl(0, 0%, 4%);
+    font-weight: 250;
+    font-style:normal;
+    color: rgb(246, 242, 242);
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px 3px 2px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Card Button Hover Effect */
+.card button:hover {
+    background-color: #efe9f0;
+}
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Slide-in Animation for h2 */
+@keyframes slideIn {
+    0% {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Fade-in Animation for Cards */
+@keyframes fadeInCard {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Animated Gradient Background (Optional) */
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+/* General button container */
+button {
+  margin-top: 20px; /* Adds space between text and button */
+}
+
+/* Uniform spacing for all buttons */
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  padding-bottom: 10px; /* Add some padding below content */
+}
+
+/* Move buttons slightly down */
+.card button {
+  margin-top:auto;/* Push buttons downward */
+  margin-bottom: 15px; /* Space at bottom */
+}

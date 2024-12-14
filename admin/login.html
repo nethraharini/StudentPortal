@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <h2>Welcome, Admin</h2>
+        <div class="card-container">
+            <!-- Manage Students Card -->
+            <div class="card" id="manage-students">
+                <h3>Manage Students</h3>
+                <p>Add, update, and delete student records</p>
+                <button onclick="window.location.href='manage_students.html'">Go to Students</button>
+            </div>
+            
+            <!-- Manage Faculty Card -->
+            <div class="card" id="manage-faculty">
+                <h3>Manage Faculty</h3>
+                <p>Add, update, and delete faculty records</p>
+                <button onclick="window.location.href='manage_faculty.html'">Go to Faculty</button>
+            </div>
+            
+            <!-- Assign Faculty to Departments Card -->
+            <div class="card" id="assign-faculty">
+                <h3>Assign Faculty to Departments</h3>
+                <p>Assign faculty members to specific departments</p>
+                <button onclick="window.location.href='assign_faculty.html'">Assign Faculty</button>
+            </div>
+            
+            <!-- View Reports Card -->
+            <div class="card" id="view-reports">
+                <h3>View Reports</h3>
+                <p>View student attendance and marks reports</p>
+                <button onclick="window.location.href='view_reports.html'">View Reports</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
