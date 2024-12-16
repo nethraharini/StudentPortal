@@ -2,16 +2,30 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manage Students</title>
-    <link rel="stylesheet" href="design.css">
+    <script src="manage_students.js"></script>
 </head>
 <body>
-    <div class="admin-action-container">
-        <h2>Manage Students</h2>
-        <button onclick="window.location.href='add_student.html'">Add Student</button>
-        <button onclick="window.location.href='update_student.html'">Update Student</button>
-        <button onclick="window.location.href='delete_student.html'">Delete Student</button>
-    </div>
+    <h2>Manage Students</h2>
+    <form id="student-form">
+        <input type="text" id="student-name" placeholder="Name" required>
+        <input type="number" id="student-age" placeholder="Age" required>
+        <button type="submit">Add Student</button>
+    </form>
+    <table id="students-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="student-list">
+            <!-- Student rows will be dynamically populated here -->
+        </tbody>
+    </table>
+
+    <script src="manage_students.js"></script>
 </body>
 </html>

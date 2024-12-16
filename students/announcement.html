@@ -4,57 +4,44 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Dashboard</title>
+    <title>Announcements</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
     <link rel="shortcut icon" href="./images/logo.png">
-    <link rel="stylesheet" href="style.css">
-
-    <style>
-        body{overflow: hidden;}
-        header{position: relative;}
-        .exam{
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            height: 80vh;
-            width: 80%;
-            margin: auto;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css"> <!-- Link to external CSS -->
 </head>
 <body>
+    <!-- Header Section -->
     <header>
         <div class="logo" title="Students portal CIT">
             <img src="src/cit.jpg" alt="">
-            <h2>StudentBridge</h2>
+            <h2>Student Bridge</h2>
         </div>
         <div class="navbar">
-            <a href="index.html" class="active">
+            <a href="studentdashboard.html" class="active">
                 <span class="material-icons-sharp">home</span>
                 <h3>Home</h3>
-            </a>
-            <a href="timetable.html">
-                <span class="material-icons-sharp">today</span>
-                <h3>Time Table</h3>
-            </a>
-            <a href="attendance.html">
-                <span class="material-icons-sharp">check_circle</span>
-                <h3>Attendance</h3>
-            </a>
-            <a href="exam.html">
-                <span class="material-icons-sharp">grid_view</span>
-                <h3>Examination</h3>
-            </a>
-            <a href="marks.html">
-                <span class="material-icons-sharp">assessment</span>
-                <h3>Marks</h3>
             </a>
             <a href="announcement.html">
                 <span class="material-icons-sharp">announcement</span>
                 <h3>Announcements</h3>
             </a>
-            <a href="#">
+            <a href="marks.html">
+                <span class="material-icons-sharp">assessment</span>
+                <h3>Marks</h3>
+            </a>
+            <a href="attendance.html">
+                <span class="material-icons-sharp">check_circle</span>
+                <h3>Attendance</h3>
+            </a>
+            <a href="password.html">
+                <span class="material-icons-sharp">grid_view</span>
+                <h3>password</h3>
+            </a>
+            <a href="timetable.html">
+                <span class="material-icons-sharp">today</span>
+                <h3>Time Table</h3>
+            </a>
+            <a href="../index.html">
                 <span class="material-icons-sharp">logout</span>
                 <h3>Logout</h3>
             </a>
@@ -68,17 +55,110 @@
         </div>
     </header>
 
-    <main>
-        <div class="Announcement">
-            <h2>Announcement</h2>
-            <table></table>
-            <table></table>
-            <table></table>
-            
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Sidebar Section -->
+        <aside>
+            <div class="profile">
+                <div class="top">
+                    <div class="profile-photo">
+                        <img src="./images/profile-1.jpg" alt="">
+                    </div>
+                    <div class="info">
+                        <p>Hey, <b>Sri</b></p>
+                        <small class="text-muted">2403717662222040</small>
+                    </div>
+                </div>
+                <div class="about">
+                    <h5>Course</h5>
+                    <p>MCA-Master of Computer Application</p>
+                    <h5>DOB</h5>
+                    <p>21-08-2003</p>
+                    <h5>Contact</h5>
+                    <p>9025122027</p>
+                    <h5>Email</h5>
+                    <p>2403717662222040@cit.edu.in</p>
+                    <h5>Address</h5>
+                    <p>Coimbatore</p>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Section -->
+        <main>
+            <div class="post-announcement">
+                <h2>Post Announcements</h2>
+                <form id="announcementForm">
+                    <textarea id="announcementText" placeholder="Type your announcement here..." required></textarea>
+                    <button type="submit">Post Announcement</button>
+                </form>
+
+                <div class="recent-announcements">
+                    <h2>Recent Announcements</h2>
+                    <div id="announcement-list">
+                        <!-- Dynamic announcements will be appended here -->
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Right Section -->
+        <div class="right">
+            <div class="announcements">
+                <h2>Announcements</h2>
+                <div class="updates" id="faculty-updates">
+                    <!-- Announcements from faculty -->
+                </div>
+            </div>
+            <div class="upcoming_exams">
+                <h2>Upcoming Exams</h2>
+                <div class="exam">
+                    <p>Data Structures - 21/12/2024</p>
+                </div>
+                <div class="exam">
+                    <p>Machine Learning - 23/12/2024</p>
+                </div>
+                <div class="exam">
+                    <p>Operating Systems - 25/12/2024</p>
+                </div>
+            </div>
         </div>
-    </main>
+    </div>
 
+    <!-- Scripts -->
+    <script src="../students/timetable.js"></script>
+    <script src="../students/app.js"></script>
+    <script>
+        // JavaScript to handle posting of announcements
+        document.getElementById('announcementForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const announcementText = document.getElementById('announcementText').value;
+            if (announcementText.trim() === '') {
+                return alert('Please type an announcement.');
+            }
+
+            // Create a new announcement element
+            const newAnnouncement = document.createElement('div');
+            newAnnouncement.classList.add('message');
+            newAnnouncement.innerHTML = `
+                <p><b>Announcement</b> ${announcementText}</p>
+                <small class="text-muted">Just Now</small>
+            `;
+
+            // Append the new announcement to the list
+            document.getElementById('announcement-list').prepend(newAnnouncement);
+
+            // Optionally, append this announcement to the student announcements as well
+            const studentUpdates = document.getElementById('faculty-updates');
+            const studentAnnouncement = document.createElement('div');
+            studentAnnouncement.classList.add('message');
+            studentAnnouncement.innerHTML = `<p><b>Faculty Announcement</b> ${announcementText}</p><small class="text-muted">Just Now</small>`;
+            studentUpdates.prepend(studentAnnouncement);
+
+            // Clear the text area
+            document.getElementById('announcementText').value = '';
+        });
+    </script>
 </body>
-
-<script src="app.js"></script>
 </html>

@@ -2,16 +2,69 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manage Faculty</title>
-    <link rel="stylesheet" href="design.css">
+    <title>Manage Students</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+    <link rel="stylesheet" href="adminstyles.css">
 </head>
 <body>
-    <div class="admin-action-container">
-        <h2>Manage Faculty</h2>
-        <button onclick="window.location.href='add_faculty.html'">Add Faculty</button>
-        <button onclick="window.location.href='update_faculty.html'">Update Faculty</button>
-        <button onclick="window.location.href='delete_faculty.html'">Delete Faculty</button>
+    <!-- Header Section -->
+    <header>
+        <div class="logo" title="Admin Portal CIT">
+            <img src="src/cit.jpg" alt="CIT Logo">
+            <h2>Student Management</h2>
+        </div>
+        <div id="profile-btn">
+            <span class="material-icons-sharp">person</span>
+        </div>
+        <div class="theme-toggler">
+            <span class="material-icons-sharp active">light_mode</span>
+            <span class="material-icons-sharp">dark_mode</span>
+        </div>
+    </header>
+
+    <!-- Main Section -->
+    <div class="container">
+        <main>
+            <h1>Manage Students</h1>
+            <p>Perform actions to add, update, or delete student records.</p>
+
+            <div class="action-cards">
+                <!-- Add Student Card -->
+                <div class="card">
+                    <span class="material-icons-sharp">person_add</span>
+                    <h3>Add Student</h3>
+                    <p>Create a new student profile in the system.</p>
+                    <button onclick="window.location.href='add_student.html'">Add Student</button>
+                </div>
+
+                <!-- Update Student Card -->
+                <div class="card">
+                    <span class="material-icons-sharp">edit</span>
+                    <h3>Update Student</h3>
+                    <p>Modify existing student details.</p>
+                    <button onclick="window.location.href='update_student.html'">Update Student</button>
+                </div>
+
+                <!-- Delete Student Card -->
+                <div class="card">
+                    <span class="material-icons-sharp">delete</span>
+                    <h3>Delete Student</h3>
+                    <p>Remove a student profile from the system.</p>
+                    <button onclick="window.location.href='delete_student.html'">Delete Student</button>
+                </div>
+            </div>
+        </main>
     </div>
+
+    <!-- Scripts -->
+    <script>
+        // Dark Mode Toggler
+        const themeToggler = document.querySelector('.theme-toggler');
+        themeToggler.addEventListener('click', () => {
+            document.body.classList.toggle('dark-theme');
+        });
+    </script>
 </body>
 </html>

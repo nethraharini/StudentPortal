@@ -2,49 +2,143 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
-    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+    <link rel="shortcut icon" href="./images/logo.png">
+    <link rel="stylesheet" href="adminstyles.css">
 </head>
 <body>
-    <!-- Admin Dashboard -->
-    <div class="dashboard-container">
-        <h2>Admin</h2>
-        
-        <!-- Card Container -->
-        <div class="card-container">
-            <!-- Manage Students Card -->
-            <div class="card">
+    <!-- Header Section -->
+    <header>
+        <div class="logo" title="Admin Portal">
+            <img src="src/admin_logo.jpg" alt="">
+            <h2>Admin Bridge</h2>
+        </div>
+        <div class="navbar">
+            <a href="dashboard.html" class="active">
+                <span class="material-icons-sharp">dashboard</span>
+                <h3>Dashboard</h3>
+            </a>
+            <a href="manage_students.html">
+                <span class="material-icons-sharp">person</span>
                 <h3>Manage Students</h3>
-                <p>Add, Update</p>
-                <p> Delete Students</p>
-                <button onclick="window.location.href='manage_students.html'">Manage</button>
-            </div>
-            
-            <!-- Manage Faculty Card -->
-            <div class="card">
+            </a>
+            <a href="manage_faculty.html">
+                <span class="material-icons-sharp">school</span>
                 <h3>Manage Faculty</h3>
-                <p>Add  Update</p>
-                <p> Delete Faculty</p>
-                <button onclick="window.location.href='manage_faculty.html'">Manage</button>
-            </div>
-            
-            <!-- View Reports Card -->
-            <div class="card">
+            </a>
+            <a href="view_reports.html">
+                <span class="material-icons-sharp">bar_chart</span>
                 <h3>View Reports</h3>
-                <p>Attendance</p>
-                <p>Marks and More</p>
-                <button onclick="window.location.href='view_reports.html'">View</button>
-            </div>
+            </a>
+            <a href="assign_faculty.html">
+                <span class="material-icons-sharp">assignment</span>
+                <h3>Assign Faculty</h3>
+            </a>
+            <a href="../index.html">
+                <span class="material-icons-sharp">logout</span>
+                <h3>Logout</h3>
+            </a>
+        </div>
+        <div id="profile-btn">
+            <span class="material-icons-sharp">admin_panel_settings</span>
+        </div>
+        <div class="theme-toggler">
+            <span class="material-icons-sharp active">light_mode</span>
+            <span class="material-icons-sharp">dark_mode</span>
+        </div>
+    </header>
 
-            <!-- Assign Faculty to Department Card -->
-            <div class="card">
-                <h3>Assign Faculty to Departments</h3>
-                <p>Manage Departmental Assignments</p>
-                <button onclick="window.location.href='assign_faculty.html'">Assign</button>
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Sidebar Section -->
+        <aside>
+            <div class="profile">
+                <div class="top">
+                    <div class="profile-photo">
+                        <img src="./images/profile-admin.jpg" alt="">
+                    </div>
+                    <div class="info">
+                        <p>Hey, <b>Admin</b></p>
+                        <small class="text-muted">ID: 1001</small>
+                    </div>
+                </div>
+                <div class="about">
+                    <h5>Email</h5>
+                    <p>admin@organization.com</p>
+                    <h5>Contact</h5>
+                    <p>+1 123-456-7890</p>
+                    <h5>Address</h5>
+                    <p>123 Admin Street, City</p>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Section -->
+        <main>
+            <div class="dashboard-container">
+                <h2>Dashboard</h2>
+                <div class="card-container">
+                    <!-- Manage Students Card -->
+                    <div class="card">
+                        <span class="material-icons-sharp">person</span>
+                        <h3>Manage Students</h3>
+                        <p>Add, Update, Delete Students</p>
+                        <button onclick="window.location.href='manage_students.html'">Manage</button>
+                    </div>
+
+                    <!-- Manage Faculty Card -->
+                    <div class="card">
+                        <span class="material-icons-sharp">school</span>
+                        <h3>Manage Faculty</h3>
+                        <p>Add, Update, Delete Faculty</p>
+                        <button onclick="window.location.href='manage_faculty.html'">Manage</button>
+                    </div>
+
+                    <!-- View Reports Card -->
+                    <div class="card">
+                        <span class="material-icons-sharp">bar_chart</span>
+                        <h3>View Reports</h3>
+                        <p>Attendance, Marks, and More</p>
+                        <button onclick="window.location.href='view_reports.html'">View</button>
+                    </div>
+
+                    <!-- Assign Faculty to Department Card -->
+                    <div class="card">
+                        <span class="material-icons-sharp">assignment</span>
+                        <h3>Assign Faculty to Departments</h3>
+                        <p>Manage Departmental Assignments</p>
+                        <button onclick="window.location.href='assign_faculty.html'">Assign</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Right Section -->
+        <div class="right">
+            <div class="announcements">
+                <h2>Announcements</h2>
+                <div class="updates">
+                    <div class="message">
+                        <p><b>Reminder:</b> Faculty meeting at 3 PM.</p>
+                        <small class="text-muted">2 Hours Ago</small>
+                    </div>
+                    <div class="message">
+                        <p><b>Update:</b> New course material available for review.</p>
+                        <small class="text-muted">Yesterday</small>
+                    </div>
+                    <div class="message">
+                        <p><b>Notice:</b> Semester schedule has been updated.</p>
+                        <small class="text-muted">Last Week</small>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
+
+    <!-- Scripts -->
+    <script src="app.js"></script>
 </body>
 </html>

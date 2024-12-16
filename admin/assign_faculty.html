@@ -2,26 +2,122 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Assign Faculty to Departments</title>
-    <link rel="stylesheet" href="design.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+    <link rel="shortcut icon" href="./images/logo.png">
+    <link rel="stylesheet" href="adminstyles.css">
 </head>
 <body>
-    <div class="admin-action-container">
-        <h2>Assign Faculty to Departments</h2>
-        <form>
-            <label for="faculty">Select Faculty:</label>
-            <select id="faculty" name="faculty">
-                <!-- Dynamically populate faculty options -->
-            </select>
-            
-            <label for="department">Select Department:</label>
-            <select id="department" name="department">
-                <!-- Dynamically populate department options -->
-            </select>
+    <!-- Header Section -->
+    <header>
+        <div class="logo" title="Admin Portal CIT">
+            <img src="src/cit.jpg" alt="CIT Logo">
+            <h2>Admin Bridge</h2>
+        </div>
+        <div class="navbar">
+            <a href="admin_dashboard.html">
+                <span class="material-icons-sharp">dashboard</span>
+                <h3>Dashboard</h3>
+            </a>
+            <a href="assign_faculty.html" class="active">
+                <span class="material-icons-sharp">assignment</span>
+                <h3>Assign Faculty</h3>
+            </a>
+            <a href="manage_students.html">
+                <span class="material-icons-sharp">groups</span>
+                <h3>Manage Students</h3>
+            </a>
+            <a href="manage_faculty.html">
+                <span class="material-icons-sharp">supervisor_account</span>
+                <h3>Manage Faculty</h3>
+            </a>
+            <a href="view_reports.html">
+                <span class="material-icons-sharp">bar_chart</span>
+                <h3>Reports</h3>
+            </a>
+            <a href="../index.html">
+                <span class="material-icons-sharp">logout</span>
+                <h3>Logout</h3>
+            </a>
+        </div>
+        <div id="profile-btn">
+            <span class="material-icons-sharp">person</span>
+        </div>
+        <div class="theme-toggler">
+            <span class="material-icons-sharp active">light_mode</span>
+            <span class="material-icons-sharp">dark_mode</span>
+        </div>
+    </header>
 
-            <button type="submit">Assign</button>
-        </form>
+    <!-- Main Container -->
+    <div class="container">
+        <main>
+            <div class="admin-action-container">
+                <h2>Assign Faculty to Departments</h2>
+                <form id="assignForm">
+                    <!-- Faculty Dropdown -->
+                    <label for="faculty">Select Faculty:</label>
+                    <select id="faculty" name="faculty">
+                        <option value="">-- Select Faculty --</option>
+                        <option value="faculty1">Dr. John Doe</option>
+                        <option value="faculty2">Dr. Jane Smith</option>
+                        <option value="faculty3">Prof. Emily Brown</option>
+                        <!-- Add more options dynamically -->
+                    </select>
+                    
+                    <!-- Department Dropdown -->
+                    <label for="department">Select Department:</label>
+                    <select id="department" name="department">
+                        <option value="">-- Select Department --</option>
+                        <option value="cse">Computer Science</option>
+                        <option value="ece">Electronics & Communication</option>
+                        <option value="mech">Mechanical Engineering</option>
+                        <!-- Add more options dynamically -->
+                    </select>
+
+                    <!-- Submit Button -->
+                    <button type="submit">Assign</button>
+                </form>
+            </div>
+        </main>
+
+        <!-- Right Section -->
+        <div class="right">
+            <div class="announcements">
+                <h2>Recent Updates</h2>
+                <div class="updates">
+                    <div class="message">
+                        <p><b>Faculty Assignment</b> Successfully assigned Dr. John Doe to Computer Science.</p>
+                        <small class="text-muted">5 Minutes Ago</small>
+                    </div>
+                    <div class="message">
+                        <p><b>System Update</b> New faculty profiles added.</p>
+                        <small class="text-muted">1 Hour Ago</small>
+                    </div>
+                    <div class="message">
+                        <p><b>Notice</b> Faculty meeting scheduled for next Monday.</p>
+                        <small class="text-muted">Yesterday</small>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
+    <!-- Scripts -->
+    <script>
+        document.getElementById("assignForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const faculty = document.getElementById("faculty").value;
+            const department = document.getElementById("department").value;
+
+            if (faculty && department) {
+                alert(`Successfully assigned ${faculty} to ${department} department.`);
+            } else {
+                alert("Please select both faculty and department.");
+            }
+        });
+    </script>
 </body>
 </html>

@@ -10,13 +10,14 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Header Section -->
     <header>
         <div class="logo" title="Students portal CIT">
             <img src="src/cit.jpg" alt="">
-            <h2>StudentBridge</h2>
+            <h2>Student Bridge</h2>
         </div>
         <div class="navbar">
-            <a href="index.html" class="active">
+            <a href="studentdashboard.html" class="active">
                 <span class="material-icons-sharp">home</span>
                 <h3>Home</h3>
             </a>
@@ -40,7 +41,7 @@
                 <span class="material-icons-sharp">announcement</span>
                 <h3>Announcements</h3>
             </a>
-            <a href="#">
+            <a href="../index.html">
                 <span class="material-icons-sharp">logout</span>
                 <h3>Logout</h3>
             </a>
@@ -53,7 +54,10 @@
             <span class="material-icons-sharp">dark_mode</span>
         </div>
     </header>
+
+    <!-- Main Container -->
     <div class="container">
+        <!-- Sidebar Section -->
         <aside>
             <div class="profile">
                 <div class="top">
@@ -79,8 +83,10 @@
                 </div>
             </div>
         </aside>
+
+        <!-- Main Section -->
         <main>
-            <<div class="timetable" id="timetable">
+            <div class="timetable" id="timetable">
                 <div>
                     <span id="prevDay">&lt;</span>
                     <h2>Today's Timetable</h2>
@@ -93,12 +99,31 @@
                             <th>Time</th>
                             <th>Room No.</th>
                             <th>Subject</th>
-                            <th></th>
                         </tr>
                     </thead>
-                    <tbody></tbody>
+                    <tbody>
+                        <!-- Sample Row -->
+                        <tr>
+                            <td>9:00 AM - 10:00 AM</td>
+                            <td>101</td>
+                            <td>Mathematics</td>
+                        </tr>
+                        <tr>
+                            <td>10:00 AM - 11:00 AM</td>
+                            <td>102</td>
+                            <td>Computer Networks</td>
+                        </tr>
+                        <tr>
+                            <td>11:00 AM - 12:00 PM</td>
+                            <td>203</td>
+                            <td>Database Management</td>
+                        </tr>
+                    </tbody>
                 </table>
+            </div>
         </main>
+
+        <!-- Right Section -->
         <div class="right">
             <div class="announcements">
                 <h2>Announcements</h2>
@@ -120,30 +145,19 @@
             <div class="upcoming_exams">
                 <h2>Upcoming Exams</h2>
                 <div class="exam">
-                    <!-- Content for Exam 1 (you can add details here) -->
+                    <p>Data Structures - 21/12/2024</p>
                 </div>
                 <div class="exam">
-                    <!-- Content for Exam 2 (you can add details here) -->
+                    <p>Machine Learning - 23/12/2024</p>
                 </div>
                 <div class="exam">
-                    <!-- Content for Exam 3 (you can add details here) -->
+                    <p>Operating Systems - 25/12/2024</p>
                 </div>
             </div>
         </div>
     </div>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            fetch('timetable.html')
-                .then(response => response.text())
-                .then(data => {
-                    const parser = new DOMParser();
-                    const doc = parser.parseFromString(data, 'text/html');
-                    const bodyContent = doc.querySelector('body').innerHTML;
-                    document.getElementById('timetable-container').innerHTML = bodyContent;
-                })
-                .catch(error => console.error('Error fetching timetable:', error));
-        });
-    </script>
+
+    <!-- Scripts -->
     <script src="timetable.js"></script>
     <script src="app.js"></script>
 </body>
