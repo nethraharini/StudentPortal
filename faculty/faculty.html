@@ -1,62 +1,165 @@
-<!-- faculty.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Faculty Dashboard</title>
-    <link rel="stylesheet" href="styles.css">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f2f2f2;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .dashboard {
-            width: 80%;
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: #ffffff;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        h1 {
-            text-align: center;
-            color: #333333;
-        }
-        .nav-links {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            margin-top: 20px;
-        }
-        .nav-links a {
-            padding: 10px;
-            text-decoration: none;
-            color: #ffffff;
-            background-color: #4CAF50;
-            text-align: center;
-            border-radius: 4px;
-            transition: background-color 0.3s;
-        }
-        .nav-links a:hover {
-            background-color: #45a049;
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+    <link rel="shortcut icon" href="./images/logo.png">
+    <link rel="stylesheet" href="facultystyles.css"> <!-- Link to external CSS -->
 </head>
 <body>
-    <div class="dashboard">
-        <h1>Faculty Dashboard</h1>
-        <div class="nav-links">
-            <a href="faculty_post_announcements.html">Post Announcements</a>
-            <a href="faculty_add_update_marks.html">Add/Update Marks (CAT, Midsem, Semester)</a>
-            <a href="faculty_marksattendance.html">Mark Attendance</a>
-            <a href="faculty_view_students.html">View Department Students</a>
+    <!-- Header Section -->
+    <header>
+        <div class="logo" title="Students portal CIT">
+            <img src="src/cit.jpg" alt="">
+            <h2>Faculty Bridge</h2>
+        </div>
+        <div class="navbar">
+            <a href="faculty.html" class="active">
+                <span class="material-icons-sharp">home</span>
+                <h3>Home</h3>
+            </a>
+            <a href="faculty_post_announcements.html">
+                <span class="material-icons-sharp">announcement</span>
+                <h3>Post Announcements</h3>
+            </a>
+            <a href="faculty_add_update_marks.html">
+                <span class="material-icons-sharp">assessment</span>
+                <h3>Add/Update Marks</h3>
+            </a>
+            <a href="faculty_marksattendance.html">
+                <span class="material-icons-sharp">check_circle</span>
+                <h3>Marks & Attendance</h3>
+            </a>
+            <a href="faculty_view_students.html">
+                <span class="material-icons-sharp">grid_view</span>
+                <h3>View Students</h3>
+            </a>
+            <a href="../students/timetable.html">
+                <span class="material-icons-sharp">today</span>
+                <h3>Time Table</h3>
+            </a>
+
+            <a href="../index.html">
+                <span class="material-icons-sharp">logout</span>
+                <h3>Logout</h3>
+            </a>
+        </div>
+        <div id="profile-btn">
+            <span class="material-icons-sharp">person</span>
+        </div>
+        <div class="theme-toggler">
+            <span class="material-icons-sharp active">light_mode</span>
+            <span class="material-icons-sharp">dark_mode</span>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Sidebar Section -->
+        <aside>
+            <div class="profile">
+                <div class="top">
+                    <div class="profile-photo">
+                        <img src="./images/profile-1.jpg" alt="">
+                    </div>
+                    <div class="info">
+                        <p>Hey, <b>Sri</b></p>
+                        <small class="text-muted">2403717662222040</small>
+                    </div>
+                </div>
+                <div class="about">
+                    <h5>Course</h5>
+                    <p>MCA-Master of Computer Application</p>
+                    <h5>DOB</h5>
+                    <p>21-08-2003</p>
+                    <h5>Contact</h5>
+                    <p>9025122027</p>
+                    <h5>Email</h5>
+                    <p>2403717662222040@cit.edu.in</p>
+                    <h5>Address</h5>
+                    <p>Coimbatore</p>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Section -->
+        <main>
+            <div class="timetable" id="timetable">
+                <div>
+                    <span id="prevDay">&lt;</span>
+                    <h2>Today's Timetable</h2>
+                    <span id="nextDay">&gt;</span>
+                </div>
+                <span class="closeBtn" onclick="timeTableAll()">X</span>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Time</th>
+                            <th>Room No.</th>
+                            <th>Subject</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Sample Row -->
+                        <tr>
+                            <td>9:00 AM - 10:00 AM</td>
+                            <td>101</td>
+                            <td>Mathematics</td>
+                        </tr>
+                        <tr>
+                            <td>10:00 AM - 11:00 AM</td>
+                            <td>102</td>
+                            <td>Computer Networks</td>
+                        </tr>
+                        <tr>
+                            <td>11:00 AM - 12:00 PM</td>
+                            <td>203</td>
+                            <td>Database Management</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+
+        <!-- Right Section -->
+        <div class="right">
+            <div class="announcements">
+                <h2>Announcements</h2>
+                <div class="updates">
+                    <div class="message">
+                        <p><b>Academic</b> Summer training internship with Live Projects.</p>
+                        <small class="text-muted">2 Minutes Ago</small>
+                    </div>
+                    <div class="message">
+                        <p><b>Co-curricular</b> Global internship opportunity by Student organization.</p>
+                        <small class="text-muted">10 Minutes Ago</small>
+                    </div>
+                    <div class="message">
+                        <p><b>Examination</b> Instructions for Mid Term Examination.</p>
+                        <small class="text-muted">Yesterday</small>
+                    </div>
+                </div>
+            </div>
+            <div class="upcoming_exams">
+                <h2>Upcoming Exams</h2>
+                <div class="exam">
+                    <p>Data Structures - 21/12/2024</p>
+                </div>
+                <div class="exam">
+                    <p>Machine Learning - 23/12/2024</p>
+                </div>
+                <div class="exam">
+                    <p>Operating Systems - 25/12/2024</p>
+                </div>
+            </div>
         </div>
     </div>
+
+    <!-- Scripts -->
+    <script src="../students/timetable.js"></script>
+    <script src="../students/app.js"></script>
 </body>
 </html>
