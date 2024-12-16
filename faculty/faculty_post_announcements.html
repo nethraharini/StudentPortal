@@ -141,6 +141,12 @@
     <script src="../students/app.js"></script>
     <script>
         // JavaScript to handle posting of announcements
+        const announcements = [
+            { text: 'New semester starts on January 10th. Welcome back, everyone!' },
+            { text: 'Join us for a guest lecture by Dr. Emily Brown on Data Science on December 18th.' }
+            // Additional announcements can be added here
+        ];
+
         document.getElementById('announcementForm').addEventListener('submit', function(e) {
             e.preventDefault();
 
@@ -149,7 +155,75 @@
                 return alert('Please type an announcement.');
             }
 
-            // Create a new announcement element
-            const newAnnouncement = document.createElement('div');
-            newAnnouncement.classList.add('message');
-            new
+            // Create a new announcement object
+            const newAnnouncement = { text: announcementText, timestamp: new Date().toLocaleTimeString() };
+
+            // Push the new announcement to the array
+            announcements.unshift(newAnnouncement); // Adding at the start for most recent first
+
+            // Update the announcements display
+            displayAnnouncements();
+
+            // Clear the text area
+            document.getElementById('announcementText').value = '';
+        });
+
+        // Function to display announcements
+        function displayAnnouncements() {
+            const announcementList = document.getElementById('announcement-list');
+            const facultyUpdates = document.getElementById('faculty-updates');
+
+            // Clear existing content
+            announcementList.innerHTML = '';
+            facultyUpdates.innerHTML = '';
+
+            // Append each announcement to both the main list and faculty updates
+            announcements.forEach(announcement => {
+                const announcementElement = `
+                    <div class="message">
+                        <p><b>Announcement</b>: ${announcement.text}</p>
+                        <small class="text-muted">${announcement.timestamp}</small>
+                    </div>
+                `;
+
+                const facultyAnnouncementElement = `
+                    <div class="message">
+                        <p><b>Faculty Announcement</b>: ${announcement.text}</p>
+                        <small class="text-muted">${announcement.timestamp}</small>
+                    </div>
+                `;
+
+                announcementList.innerHTML += announcementElement;
+                facultyUpdates.innerHTML += facultyAnnouncementElement;
+            });
+        }
+
+        // Initial display of announcements
+        displayAnnouncements();
+
+        // JavaScript to handle posting of comments
+        document.getElementById('commentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const commentText = document.getElementById('commentText').value;
+            if (commentText.trim() === '') {
+                return alert('Please type a comment.');
+            }
+
+            // Create a new comment element
+            const newComment = document.createElement('div');
+            newComment.classList.add('comment');
+            newComment.innerHTML = `
+                <p>${commentText}</p>
+                <small class="text-muted">Just Now</small>
+            `;
+
+            // Append the new comment to the comments list
+            document.getElementById('comments-list').prepend(newComment);
+
+            // Clear the comment text area
+            document.getElementById('commentText').value = '';
+        });
+    </script>
+</body>
+</html>
