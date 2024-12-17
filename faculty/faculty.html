@@ -6,14 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Faculty Dashboard</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
-    <link rel="shortcut icon" href="./images/logo.png">
+    <!-- Fixed image path -->
+    <link rel="shortcut icon" href="src/cit.png" type="image/png">
     <link rel="stylesheet" href="facultystyles.css"> <!-- Link to external CSS -->
 </head>
 <body>
     <!-- Header Section -->
     <header>
         <div class="logo" title="Students portal CIT">
-            <img src="src/cit.jpg" alt="">
+            <!-- Debugging: Added 'images/cit.png' to verify path -->
+            <img src="src/cit.png" alt="CIT Logo" style="width: 50px; height: 50px;">
             <h2>Faculty Bridge</h2>
         </div>
         <div class="navbar">
@@ -63,7 +65,7 @@
             <div class="profile">
                 <div class="top">
                     <div class="profile-photo">
-                        <img src="./images/profile-1.jpg" alt="">
+                        <img src="./images/cit.jpg" alt="Profile Picture">
                     </div>
                     <div class="info">
                         <p>Hey, <b>Sri</b></p>
@@ -103,7 +105,6 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- Sample Row -->
                         <tr>
                             <td>9:00 AM - 10:00 AM</td>
                             <td>101</td>
@@ -157,6 +158,9 @@
             </div>
         </div>
     </div>
+
+    <!-- Debugging Image -->
+    
 
     <!-- Scripts -->
     <script src="../students/timetable.js"></script>

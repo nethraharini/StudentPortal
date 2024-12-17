@@ -2,75 +2,195 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add/Update Marks</title>
-    <link rel="stylesheet" href="facultystyles.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+    <link rel="shortcut icon" href="src/cit.png" type="image/png">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f2f2f2;
-            margin: 0;
-            padding: 0;
+        /* Marks Section Styles */
+        .marks-container {
+            width: 90%;
+            margin: 2rem auto;
+            padding: 1.5rem;
+            background: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
         }
-        .container {
-            width: 80%;
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: #ffffff;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        h1 {
+
+        .marks-container h2 {
+            margin-bottom: 1rem;
+            color: #333;
             text-align: center;
-            color: #333333;
+            font-size: 1.8rem;
         }
+
         form {
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 1rem;
         }
-        label {
-            font-size: 14px;
-            color: #333333;
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
         }
-        input[type="text"], select {
-            padding: 10px;
-            font-size: 14px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
+
+        .form-group label {
+            font-size: 1rem;
+            color: #555;
+            margin-bottom: 0.3rem;
         }
+
+        .form-group input, .form-group select {
+            padding: 0.8rem;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
         button {
-            padding: 10px;
-            background-color: #4CAF50;
-            color: #ffffff;
+            padding: 0.8rem;
+            background-color: #0078d4;
+            color: #fff;
             border: none;
-            border-radius: 4px;
+            font-size: 1rem;
+            border-radius: 5px;
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: background 0.3s ease;
         }
+
         button:hover {
-            background-color: #45a049;
+            background-color: #005fa3;
+        }
+
+        .marks-table {
+            width: 100%;
+            margin-top: 2rem;
+            border-collapse: collapse;
+        }
+
+        .marks-table th, .marks-table td {
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        .marks-table th {
+            background-color: #0078d4;
+            color: #fff;
+        }
+
+        .marks-table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .marks-table tr:hover {
+            background-color: #f1f9ff;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Add/Update Marks (CAT, Midsem, Semester)</h1>
-        <form action="submit_marks.php" method="post">
-            <label for="student_id">Student ID:</label>
-            <input type="text" id="student_id" name="student_id" required>
+    <div class="marks-container">
+        <h2>Add/Update Student Marks</h2>
+        <form id="marks-form">
+            <div class="form-group">
+                <label for="student-id">Student ID</label>
+                <input type="text" id="student-id" placeholder="Enter Student ID" required>
+            </div>
 
-            <label for="cat_marks">CAT Marks:</label>
-            <input type="text" id="cat_marks" name="cat_marks" required>
+            <div class="form-group">
+                <label for="subject">Subject</label>
+                <select id="subject" required>
+                    <option value="" disabled selected>Select Subject</option>
+                    <option value="Java">Java</option>
+                    <option value="DSA">DSA</option>
+                    <option value="OS">OS</option>
+                    <option value="Math">Math</option>
+                    <option value="DBMS">DBMS</option>
+                </select>
+            </div>
 
-            <label for="midsem_marks">Midsem Marks:</label>
-            <input type="text" id="midsem_marks" name="midsem_marks" required>
+            <div class="form-group">
+                <label for="marks">Marks</label>
+                <input type="number" id="marks" placeholder="Enter Marks" min="0" max="100" required>
+            </div>
 
-            <label for="semester_marks">Semester Marks:</label>
-            <input type="text" id="semester_marks" name="semester_marks" required>
-
-            <button type="submit">Update Marks</button>
+            <button type="submit" id="submit-btn">Add Marks</button>
         </form>
+
+        <table class="marks-table" id="marks-table">
+            <thead>
+                <tr>
+                    <th>Student ID</th>
+                    <th>Subject</th>
+                    <th>Marks</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="table-body"></tbody>
+        </table>
     </div>
+
+    <script>
+        const form = document.getElementById("marks-form");
+        const tableBody = document.getElementById("table-body");
+        const submitBtn = document.getElementById("submit-btn");
+
+        let editRow = null;
+
+        // Form Submit Event
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const studentId = document.getElementById("student-id").value;
+            const subject = document.getElementById("subject").value;
+            const marks = document.getElementById("marks").value;
+
+            if (editRow) {
+                // Update existing row
+                editRow.children[0].innerText = studentId;
+                editRow.children[1].innerText = subject;
+                editRow.children[2].innerText = marks;
+
+                submitBtn.innerText = "Add Marks";
+                editRow = null;
+            } else {
+                // Add new row
+                const row = document.createElement("tr");
+
+                row.innerHTML = `
+                    <td>${studentId}</td>
+                    <td>${subject}</td>
+                    <td>${marks}</td>
+                    <td>
+                        <button style="background: #f39c12; color: white;" onclick="editRowFunc(this)">Edit</button>
+                        <button style="background: #e74c3c; color: white;" onclick="deleteRowFunc(this)">Delete</button>
+                    </td>
+                `;
+
+                tableBody.appendChild(row);
+            }
+
+            form.reset();
+        });
+
+        // Edit Row Function
+        function editRowFunc(button) {
+            editRow = button.parentElement.parentElement;
+
+            document.getElementById("student-id").value = editRow.children[0].innerText;
+            document.getElementById("subject").value = editRow.children[1].innerText;
+            document.getElementById("marks").value = editRow.children[2].innerText;
+
+            submitBtn.innerText = "Update Marks";
+        }
+
+        // Delete Row Function
+        function deleteRowFunc(button) {
+            const row = button.parentElement.parentElement;
+            row.remove();
+        }
+    </script>
 </body>
 </html>

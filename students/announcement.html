@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Announcements</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
-    <link rel="shortcut icon" href="./images/logo.png">
+    <link rel="shortcut icon" href="src/cit.jpg" type="image/png">
     <link rel="stylesheet" href="style.css"> <!-- Link to external CSS -->
 </head>
 <body>
@@ -99,6 +99,17 @@
                         <!-- Dynamic announcements will be appended here -->
                     </div>
                 </div>
+
+                <div class="comment-section">
+                    <h3>Comments</h3>
+                    <div id="comments-list">
+                        <!-- Comments will be displayed here -->
+                    </div>
+                    <form id="commentForm">
+                        <textarea id="commentText" placeholder="Add a comment..." required></textarea>
+                        <button type="submit">Post Comment</button>
+                    </form>
+                </div>
             </div>
         </main>
 
@@ -158,6 +169,30 @@
 
             // Clear the text area
             document.getElementById('announcementText').value = '';
+        });
+
+        // JavaScript to handle posting of comments
+        document.getElementById('commentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const commentText = document.getElementById('commentText').value;
+            if (commentText.trim() === '') {
+                return alert('Please type a comment.');
+            }
+
+            // Create a new comment element
+            const newComment = document.createElement('div');
+            newComment.classList.add('message');
+            newComment.innerHTML = `
+                <p>${commentText}</p>
+                <small class="text-muted">Just Now</small>
+            `;
+
+            // Append the new comment to the comments list
+            document.getElementById('comments-list').prepend(newComment);
+
+            // Clear the text area
+            document.getElementById('commentText').value = '';
         });
     </script>
 </body>
