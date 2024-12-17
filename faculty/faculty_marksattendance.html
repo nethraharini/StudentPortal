@@ -2,108 +2,208 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mark Attendance</title>
+    <title>Add/Update Attendance</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
     <link rel="shortcut icon" href="src/cit.png" type="image/png">
-    <link rel="stylesheet" href="facultystyles.css">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f2f2f2;
-            margin: 0;
-            padding: 0;
+        /* Attendance Section Styles */
+        .marks-container {
+            width: 90%;
+            margin: 2rem auto;
+            padding: 1.5rem;
+            background: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
         }
-        .container {
-            width: 80%;
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: #ffffff;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        h1 {
+
+        .marks-container h2 {
+            margin-bottom: 1rem;
+            color: #333;
             text-align: center;
-            color: #333333;
+            font-size: 1.8rem;
         }
+
         form {
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 1rem;
         }
-        label {
-            font-size: 14px;
-            color: #333333;
-        }
-        input[type="date"], select, input[type="checkbox"] {
-            padding: 10px;
-            font-size: 14px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-        }
-        .students-list {
+
+        .form-group {
             display: flex;
             flex-direction: column;
-            gap: 5px;
         }
-        .student {
-            display: flex;
-            align-items: center;
+
+        .form-group label {
+            font-size: 1rem;
+            color: #555;
+            margin-bottom: 0.3rem;
         }
-        .student input[type="checkbox"] {
-            margin-right: 10px;
+
+        .form-group select {
+            padding: 0.8rem;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
         }
+
+        .form-group input[type="checkbox"] {
+            margin-right: 0.5rem;
+        }
+
         button {
-            padding: 10px;
-            background-color: #4CAF50;
-            color: #ffffff;
+            padding: 0.8rem;
+            background-color: #0078d4;
+            color: #fff;
             border: none;
-            border-radius: 4px;
+            font-size: 1rem;
+            border-radius: 5px;
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: background 0.3s ease;
         }
+
         button:hover {
-            background-color: #45a049;
+            background-color: #005fa3;
+        }
+
+        .marks-table {
+            width: 100%;
+            margin-top: 2rem;
+            border-collapse: collapse;
+        }
+
+        .marks-table th, .marks-table td {
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        .marks-table th {
+            background-color: #0078d4;
+            color: #fff;
+        }
+
+        .marks-table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .marks-table tr:hover {
+            background-color: #f1f9ff;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Mark Attendance</h1>
-        <form action="submit_attendance.php" method="post">
-            <label for="attendance_date">Date:</label>
-            <input type="date" id="attendance_date" name="attendance_date" required>
-
-            <label for="attendance_subject">Subject:</label>
-            <select id="attendance_subject" name="attendance_subject" required>
-                <option value="math">Math</option>
-                <option value="Java">Java</option>
-                <option value="Python">Python</option>
-                <option value="DSA">DSA</option>
-                <option value="DBMS">DBMS</option>
-                <option value="OS">OS</option>
-                <!-- Add more subjects as needed -->
-            </select>
-
-            <label>Students Present:</label>
-            <div class="students-list">
-                <!-- Example student checkboxes, this could be dynamically generated from a database in a real scenario -->
-                <div class="student">
-                    <input type="checkbox" id="student1" name="students[]" value="student1">
-                    <label for="student1">Student 1</label>
-                </div>
-                <div class="student">
-                    <input type="checkbox" id="student2" name="students[]" value="student2">
-                    <label for="student2">Student 2</label>
-                </div>
-                <div class="student">
-                    <input type="checkbox" id="student3" name="students[]" value="student3">
-                    <label for="student3">Student 3</label>
-                </div>
-                <!-- More students as necessary -->
+    <div class="marks-container">
+        <h2>Add/Update Student Attendance</h2>
+        <form id="attendance-form">
+            <div class="form-group">
+                <label for="student-id">Student ID</label>
+                <input type="text" id="student-id" placeholder="Enter Student ID" required>
             </div>
 
-            <button type="submit">Mark Attendance</button>
+            <div class="form-group">
+                <label for="subject">Subject</label>
+                <select id="subject" required>
+                    <option value="" disabled selected>Select Subject</option>
+                    <option value="Java">Java</option>
+                    <option value="DSA">DSA</option>
+                    <option value="OS">OS</option>
+                    <option value="Math">Math</option>
+                    <option value="DBMS">DBMS</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="attendance">Attendance</label>
+                <div>
+                    <label>
+                        <input type="checkbox" id="present" value="Present"> Present
+                    </label>
+                    <label>
+                        <input type="checkbox" id="absent" value="Absent"> Absent
+                    </label>
+                </div>
+            </div>
+
+            <button type="submit" id="submit-btn">Mark Attendance</button>
         </form>
+
+        <table class="marks-table" id="marks-table">
+            <thead>
+                <tr>
+                    <th>Student ID</th>
+                    <th>Subject</th>
+                    <th>Attendance</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="table-body"></tbody>
+        </table>
     </div>
+
+    <script>
+        const form = document.getElementById("attendance-form");
+        const tableBody = document.getElementById("table-body");
+        const submitBtn = document.getElementById("submit-btn");
+
+        let editRow = null;
+
+        // Form Submit Event
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const studentId = document.getElementById("student-id").value;
+            const subject = document.getElementById("subject").value;
+            const present = document.getElementById("present").checked ? "Present" : "Absent";
+            const absent = document.getElementById("absent").checked ? "Absent" : "Present";
+
+            if (editRow) {
+                // Update existing row
+                editRow.children[0].innerText = studentId;
+                editRow.children[1].innerText = subject;
+                editRow.children[2].innerText = present;
+
+                submitBtn.innerText = "Mark Attendance";
+                editRow = null;
+            } else {
+                // Add new row
+                const row = document.createElement("tr");
+
+                row.innerHTML = `
+                    <td>${studentId}</td>
+                    <td>${subject}</td>
+                    <td>${present}</td>
+                    <td>
+                        <button style="background: #f39c12; color: white;" onclick="editRowFunc(this)">Edit</button>
+                        <button style="background: #e74c3c; color: white;" onclick="deleteRowFunc(this)">Delete</button>
+                    </td>
+                `;
+
+                tableBody.appendChild(row);
+            }
+
+            form.reset();
+        });
+
+        // Edit Row Function
+        function editRowFunc(button) {
+            editRow = button.parentElement.parentElement;
+
+            document.getElementById("student-id").value = editRow.children[0].innerText;
+            document.getElementById("subject").value = editRow.children[1].innerText;
+            document.getElementById("present").checked = editRow.children[2].innerText === "Present";
+            document.getElementById("absent").checked = editRow.children[2].innerText === "Absent";
+
+            submitBtn.innerText = "Update Attendance";
+        }
+
+        // Delete Row Function
+        function deleteRowFunc(button) {
+            const row = button.parentElement.parentElement;
+            row.remove();
+        }
+    </script>
 </body>
 </html>

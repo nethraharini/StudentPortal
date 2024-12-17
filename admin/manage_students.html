@@ -2,10 +2,51 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
     <title>Manage Students</title>
     <script src="manage_students.js"></script>
 </head>
 <body>
+    <header>
+        <div class="logo" title="Admin Portal">
+            <img src="src/admin_logo.jpg" alt="">
+            <h2>Admin Bridge</h2>
+        </div>
+        <div class="navbar">
+            <a href="dashboard.html" class="active">
+                <span class="material-icons-sharp">dashboard</span>
+                <h3>Dashboard</h3>
+            </a>
+            <a href="manage_students.html">
+                <span class="material-icons-sharp">person</span>
+                <h3>Manage Students</h3>
+            </a>
+            <a href="manage_faculty.html">
+                <span class="material-icons-sharp">school</span>
+                <h3>Manage Faculty</h3>
+            </a>
+            <a href="view_reports.html">
+                <span class="material-icons-sharp">bar_chart</span>
+                <h3>View Reports</h3>
+            </a>
+            <a href="assign_faculty.html">
+                <span class="material-icons-sharp">assignment</span>
+                <h3>Assign Faculty</h3>
+            </a>
+            <a href="../index.html">
+                <span class="material-icons-sharp">logout</span>
+                <h3>Logout</h3>
+            </a>
+        </div>
+        <div id="profile-btn">
+            <span class="material-icons-sharp">admin_panel_settings</span>
+        </div>
+        <div class="theme-toggler">
+            <span class="material-icons-sharp active">light_mode</span>
+            <span class="material-icons-sharp">dark_mode</span>
+        </div>
+    </header>
+
     <h2>Manage Students</h2>
     <form id="student-form">
         <input type="text" id="student-name" placeholder="Name" required>
