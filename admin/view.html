@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Reports</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+    <link rel="stylesheet" href="adminstyles.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="logo" title="Admin Portal CIT">
+            <img src="cit.jpg" alt="CIT Logo">
+            <h2>Admin Bridge</h2>
+        </div>
+        <!-- Navigation Menu -->
+        <div class="navbar">
+            <a href="admin_dashboard.html">
+                <span class="material-icons-sharp">dashboard</span>
+                <h3>Dashboard</h3>
+            </a>
+            <a href="manage_students.html">
+                <span class="material-icons-sharp">person</span>
+                <h3>Manage Students</h3>
+            </a>
+            <a href="manage_faculty.html">
+                <span class="material-icons-sharp">school</span>
+                <h3>Manage Faculty</h3>
+            </a>
+            <a href="view_reports.html" class="active">
+                <span class="material-icons-sharp">bar_chart</span>
+                <h3>View Reports</h3>
+            </a>
+            <a href="assign_faculty.html">
+                <span class="material-icons-sharp">assignment</span>
+                <h3>Assign Faculty</h3>
+            </a>
+            <a href="../index.html">
+                <span class="material-icons-sharp">logout</span>
+                <h3>Logout</h3>
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Sidebar Section -->
+        <aside>
+            <div class="profile">
+                <div class="top">
+                    <div class="profile-photo">
+                        <img src="profile-admin.jpg" alt="Admin Profile">
+                    </div>
+                    <div class="info">
+                        <p>Hey, <b>Admin</b></p>
+                        <small class="text-muted">ID: 1001</small>
+                    </div>
+                </div>
+                <div class="about">
+                    <h5>Email</h5>
+                    <p>admin@organization.com</p>
+                    <h5>Contact</h5>
+                    <p>+1 123-456-7890</p>
+                    <h5>Address</h5>
+                    <p>123 Admin Street, City</p>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Section -->
+        <main>
+            <div class="view-reports-section">
+                <h2>View Student Reports</h2>
+
+                <!-- Table Container -->
+                <div class="table-container">
+                    <table id="reports-table">
+                        <thead>
+                            <tr>
+                                <th>Student ID</th>
+                                <th>Name</th>
+                                <th>Department</th>
+                                <th>Attendance (%)</th>
+                                <th>Marks</th>
+                                <th>Report</th>
+                            </tr>
+                        </thead>
+                        <tbody id="reports-list">
+                            <!-- Report rows will be dynamically populated here -->
+                            <tr>
+                                <td>101</td>
+                                <td>John Doe</td>
+                                <td>Computer Science</td>
+                                <td>90%</td>
+                                <td>85</td>
+                                <td><button class="view-report-btn">View Report</button></td>
+                            </tr>
+                            <tr>
+                                <td>102</td>
+                                <td>Jane Smith</td>
+                                <td>Electrical Engineering</td>
+                                <td>80%</td>
+                                <td>78</td>
+                                <td><button class="view-report-btn">View Report</button></td>
+                            </tr>
+                            <!-- More rows can be added here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Script -->
+    <script src="view_reports.js"></script>
+</body>
+</html>
