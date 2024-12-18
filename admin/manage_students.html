@@ -2,29 +2,78 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manage Students</title>
-    <script src="manage_students.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <!-- Material Icons for Icons in Navbar -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+    <script src="manage_students.js" defer></script>
 </head>
 <body>
-    <h2>Manage Students</h2>
-    <form id="student-form">
-        <input type="text" id="student-name" placeholder="Name" required>
-        <input type="number" id="student-age" placeholder="Age" required>
-        <button type="submit">Add Student</button>
-    </form>
-    <table id="students-table">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Age</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody id="student-list">
-            <!-- Student rows will be dynamically populated here -->
-        </tbody>
-    </table>
+    <!-- Navbar -->
+    <header>
+        <div class="logo" title="Admin Portal">
+            <img src="src/admin_logo.jpg" alt="Admin Logo" />
+            <h2>Admin Bridge</h2>
+        </div>
+        <div class="navbar">
+            <a href="admin_dashboard.html" class="active">
+                <span class="material-icons-sharp">dashboard</span>
+                <h3>Dashboard</h3>
+            </a>
+            <a href="manage_students.html">
+                <span class="material-icons-sharp">person</span>
+                <h3>Manage Students</h3>
+            </a>
+            <a href="manage_faculty.html">
+                <span class="material-icons-sharp">school</span>
+                <h3>Manage Faculty</h3>
+            </a>
+            <a href="view_reports.html">
+                <span class="material-icons-sharp">bar_chart</span>
+                <h3>View Reports</h3>
+            </a>
+            <a href="assign_faculty.html">
+                <span class="material-icons-sharp">assignment</span>
+                <h3>Assign Faculty</h3>
+            </a>
+            <a href="../index.html">
+                <span class="material-icons-sharp">logout</span>
+                <h3>Logout</h3>
+            </a>
+        </div>
+        <div id="profile-btn">
+            <span class="material-icons-sharp">admin_panel_settings</span>
+        </div>
+        <div class="theme-toggler">
+            <span class="material-icons-sharp active">light_mode</span>
+            <span class="material-icons-sharp">dark_mode</span>
+        </div>
+    </header>
+
+    <!-- Manage Students Section -->
+    <main>
+        <h2>Manage Students</h2>
+        <form id="student-form">
+            <input type="text" id="student-name" placeholder="Name" required>
+            <input type="number" id="student-age" placeholder="Age" required>
+            <button type="submit">Add Student</button>
+        </form>
+
+        <table id="students-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="student-list">
+                <!-- Student rows will be dynamically populated here -->
+            </tbody>
+        </table>
+    </main>
 
     <script src="manage_students.js"></script>
 </body>

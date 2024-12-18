@@ -416,6 +416,13 @@ main .timetable.active .closeBtn{
 .attendance{
     margin-top: 2rem;
 }
+.attendance {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    margin: 0 auto; /* Center alignment */
+}
+
 .attendance.h1{
     display: block !important;
     visibility: visible !important;

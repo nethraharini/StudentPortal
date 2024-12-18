@@ -21,25 +21,25 @@
                 <span class="material-icons-sharp">home</span>
                 <h3>Home</h3>
             </a>
-            <a href="announcement.html">
-                <span class="material-icons-sharp">announcement</span>
-                <h3>Announcements</h3>
-            </a>
-            <a href="marks.html">
-                <span class="material-icons-sharp">assessment</span>
-                <h3>Marks</h3>
+            <a href="timetable.html">
+                <span class="material-icons-sharp">today</span>
+                <h3>Time Table</h3>
             </a>
             <a href="attendance.html">
                 <span class="material-icons-sharp">check_circle</span>
                 <h3>Attendance</h3>
             </a>
-            <a href="password.html">
+            <a href="exam.html">
                 <span class="material-icons-sharp">grid_view</span>
-                <h3>password</h3>
+                <h3>Examination</h3>
             </a>
-            <a href="timetable.html">
-                <span class="material-icons-sharp">today</span>
-                <h3>Time Table</h3>
+            <a href="marks.html">
+                <span class="material-icons-sharp">assessment</span>
+                <h3>Marks</h3>
+            </a>
+            <a href="announcement.html">
+                <span class="material-icons-sharp">announcement</span>
+                <h3>Announcements</h3>
             </a>
             <a href="../index.html">
                 <span class="material-icons-sharp">logout</span>
@@ -84,115 +84,63 @@
             </div>
         </aside>
 
-        <!-- Main Section -->
         <main>
-            <div class="post-announcement">
-                <h2>Post Announcements</h2>
-                <form id="announcementForm">
-                    <textarea id="announcementText" placeholder="Type your announcement here..." required></textarea>
-                    <button type="submit">Post Announcement</button>
-                </form>
-
-                <div class="recent-announcements">
-                    <h2>Recent Announcements</h2>
-                    <div id="announcement-list">
-                        <!-- Dynamic announcements will be appended here -->
+            <div class="container">
+                    <div class="recent-announcements">
+                        <h2>Recent Announcements</h2>
+                        <div id="announcement-list">
+                            <!-- Predefined Announcements -->
+                            <div class="announcement">
+                                <p><b>Announcement:</b> Mid-term exams will start on 21/12/2024. Prepare accordingly.</p>
+                                <small class="text-muted">Posted on: 15/12/2024</small>
+                                <div class="comments-section">
+                                    <h4>Comments:</h4>
+                                    <div class="comments" data-id="1">
+                                        <!-- Comments for this announcement -->
+                                    </div>
+                                    <form class="commentForm" data-id="1">
+                                        <textarea placeholder="Add a comment..." required></textarea>
+                                        <button type="submit">Post Comment</button>
+                                    </form>
+                                </div>
+                            </div>
+        
+                            <div class="announcement">
+                                <p><b>Announcement:</b> Project submission deadline is 31/12/2024.</p>
+                                <small class="text-muted">Posted on: 10/12/2024</small>
+                                <div class="comments-section">
+                                    <h4>Comments:</h4>
+                                    <div class="comments" data-id="2">
+                                        <!-- Comments for this announcement -->
+                                    </div>
+                                    <form class="commentForm" data-id="2">
+                                        <textarea placeholder="Add a comment..." required></textarea>
+                                        <button type="submit">Post Comment</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-
-                <div class="comment-section">
-                    <h3>Comments</h3>
-                    <div id="comments-list">
-                        <!-- Comments will be displayed here -->
-                    </div>
-                    <form id="commentForm">
-                        <textarea id="commentText" placeholder="Add a comment..." required></textarea>
-                        <button type="submit">Post Comment</button>
-                    </form>
-                </div>
             </div>
         </main>
-
-        <!-- Right Section -->
-        <div class="right">
-            <div class="announcements">
-                <h2>Announcements</h2>
-                <div class="updates" id="faculty-updates">
-                    <!-- Announcements from faculty -->
-                </div>
-            </div>
-            <div class="upcoming_exams">
-                <h2>Upcoming Exams</h2>
-                <div class="exam">
-                    <p>Data Structures - 21/12/2024</p>
-                </div>
-                <div class="exam">
-                    <p>Machine Learning - 23/12/2024</p>
-                </div>
-                <div class="exam">
-                    <p>Operating Systems - 25/12/2024</p>
-                </div>
-            </div>
-        </div>
     </div>
-
-    <!-- Scripts -->
-    <script src="../students/timetable.js"></script>
-    <script src="../students/app.js"></script>
     <script>
-        // JavaScript to handle posting of announcements
-        document.getElementById('announcementForm').addEventListener('submit', function(e) {
-            e.preventDefault();
+        document.querySelectorAll('.commentForm').forEach(form => {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const announcementId = this.getAttribute('data-id');
+                const commentText = this.querySelector('textarea').value;
 
-            const announcementText = document.getElementById('announcementText').value;
-            if (announcementText.trim() === '') {
-                return alert('Please type an announcement.');
-            }
-
-            // Create a new announcement element
-            const newAnnouncement = document.createElement('div');
-            newAnnouncement.classList.add('message');
-            newAnnouncement.innerHTML = `
-                <p><b>Announcement</b> ${announcementText}</p>
-                <small class="text-muted">Just Now</small>
-            `;
-
-            // Append the new announcement to the list
-            document.getElementById('announcement-list').prepend(newAnnouncement);
-
-            // Optionally, append this announcement to the student announcements as well
-            const studentUpdates = document.getElementById('faculty-updates');
-            const studentAnnouncement = document.createElement('div');
-            studentAnnouncement.classList.add('message');
-            studentAnnouncement.innerHTML = `<p><b>Faculty Announcement</b> ${announcementText}</p><small class="text-muted">Just Now</small>`;
-            studentUpdates.prepend(studentAnnouncement);
-
-            // Clear the text area
-            document.getElementById('announcementText').value = '';
-        });
-
-        // JavaScript to handle posting of comments
-        document.getElementById('commentForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-
-            const commentText = document.getElementById('commentText').value;
-            if (commentText.trim() === '') {
-                return alert('Please type a comment.');
-            }
-
-            // Create a new comment element
-            const newComment = document.createElement('div');
-            newComment.classList.add('message');
-            newComment.innerHTML = `
-                <p>${commentText}</p>
-                <small class="text-muted">Just Now</small>
-            `;
-
-            // Append the new comment to the comments list
-            document.getElementById('comments-list').prepend(newComment);
-
-            // Clear the text area
-            document.getElementById('commentText').value = '';
+                if (commentText.trim() === '') {
+                    alert('Please enter a comment.');
+                    return;
+                }
+                const comment = document.createElement('p');
+                comment.textContent = commentText;
+                const commentsSection = document.querySelector(`.comments[data-id="${announcementId}"]`);
+                commentsSection.appendChild(comment);
+                this.querySelector('textarea').value = '';
+            });
         });
     </script>
 </body>
