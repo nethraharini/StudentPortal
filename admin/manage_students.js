@@ -1,7 +1,3 @@
-// Mock API for demonstration purposes
-const apiUrl = 'https://api.example.com/students';
-
-// Fetch and display students
 function fetchStudents() {
     fetch(apiUrl)
         .then(response => response.json())
