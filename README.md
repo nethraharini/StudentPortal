@@ -11,7 +11,7 @@ This is Collaborative projects for our Student-Portal
 │     └── Time Table  
 
 
-/**ADMIN FLOW**/
+**ADMIN FLOW**
 ├── Admin → Admin Dashboard  
 │     ├── Manage Students  
 │     │     ├── Add  
@@ -22,7 +22,7 @@ This is Collaborative projects for our Student-Portal
 │           ├── Update  
 │           └── Delete  
 
-/**STUDENTS FLOW**/
+**STUDENTS FLOW**
 ├── Student → Student Dashboard  
       ├── Marks  
       ├── Attendance  
