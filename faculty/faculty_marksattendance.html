@@ -2,210 +2,173 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add/Update Attendance</title>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
-    <link rel="shortcut icon" href="src/cit.png" type="image/png">
-    <link rel="stylesheet" href="facultystyles.css">  
-
+    <title>Attendance Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
-        /* Attendance Section Styles */
-        .marks-container {
-            width: 90%;
-            margin: 2rem auto;
-            padding: 1.5rem;
-            background: #f9f9f9;
-            border-radius: 10px;
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        :root {
+            --bg-color: white;
+            --text-color: black;
+            --header-bg: white;
+            --header-text: black;
+            --button-bg: lightgray;
+            --button-text: black;
         }
 
-        .marks-container h2 {
-            margin-bottom: 1rem;
-            color: #333;
-            text-align: center;
-            font-size: 1.8rem;
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
         }
 
-        form {
+        header {
             display: flex;
-            flex-direction: column;
-            gap: 1rem;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: var(--header-bg);
+            color: var(--header-text);
+            border-bottom: 1px solid #ccc;
+        }
+
+        header .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        header .logo img {
+            margin-right: 10px;
+        }
+
+        header .navbar a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+        }
+
+        header .navbar a.active {
+            text-decoration: underline;
+        }
+
+        button {
+            padding: 10px 15px;
+            background-color: var(--button-bg);
+            color: var(--button-text);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+
+        .container {
+            padding: 20px;
+            max-width: 800px;
+            margin: auto;
         }
 
         .form-group {
-            display: flex;
-            flex-direction: column;
+            margin-bottom: 15px;
         }
 
         .form-group label {
-            font-size: 1rem;
-            color: #555;
-            margin-bottom: 0.3rem;
+            display: block;
+            margin-bottom: 5px;
         }
 
-        .form-group select {
-            padding: 0.8rem;
-            font-size: 1rem;
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 10px;
             border: 1px solid #ccc;
             border-radius: 5px;
         }
 
-        .form-group input[type="checkbox"] {
-            margin-right: 0.5rem;
-        }
-
-        button {
-            padding: 0.8rem;
-            background-color: #0078d4;
-            color: #fff;
-            border: none;
-            font-size: 1rem;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background 0.3s ease;
-        }
-
-        button:hover {
-            background-color: #005fa3;
-        }
-
-        .marks-table {
+        table {
             width: 100%;
-            margin-top: 2rem;
             border-collapse: collapse;
+            margin-top: 20px;
         }
 
-        .marks-table th, .marks-table td {
-            padding: 0.8rem;
+        table th, table td {
             border: 1px solid #ddd;
-            text-align: center;
+            padding: 10px;
+            text-align: left;
         }
 
-        .marks-table th {
-            background-color: #0078d4;
-            color: #fff;
+        table th {
+            background-color: #f4f4f4;
         }
 
-        .marks-table tr:nth-child(even) {
-            background-color: #f2f2f2;
-        }
-
-        .marks-table tr:hover {
-            background-color: #f1f9ff;
+        .dark-mode {
+            --bg-color: black;
+            --text-color: white;
+            --header-bg: #333;
+            --header-text: white;
+            --button-bg: gray;
+            --button-text: white;
         }
     </style>
 </head>
 <body>
-    <div class="marks-container">
-        <h2>Add/Update Student Attendance</h2>
+    <header>
+        <div class="logo">
+            <img src="src/cit.png" alt="CIT Logo" style="width: 40px; height: 40px;">
+            <h2>Faculty Bridge</h2>
+        </div>
+        <div class="navbar">
+            <a href="faculty.html" class="active">Home</a>
+            <a href="faculty_post_announcements.html">Post Announcements</a>
+            <a href="faculty_add_update_marks.html">Add/Update Marks</a>
+            <a href="faculty_marksattendance.html">Marks & Attendance</a>
+            <a href="faculty_view_students.html">View Students</a>
+            <a href="timetable.html">Time Table</a>
+            <a href="../index.html">Logout</a>
+        </div>
+        <button id="theme-toggle">Switch to Dark Mode</button>
+    </header>
+
+    <div class="container">
+        <h2>Add/Update Attendance</h2>
         <form id="attendance-form">
             <div class="form-group">
-                <label for="student-id">Student ID</label>
-                <input type="text" id="student-id" placeholder="Enter Student ID" required>
+                <label for="attendance-student-id">Student ID</label>
+                <input type="text" id="attendance-student-id" placeholder="Enter Student ID" required>
             </div>
-
             <div class="form-group">
-                <label for="subject">Subject</label>
-                <select id="subject" required>
+                <label for="attendance-subject">Subject</label>
+                <select id="attendance-subject" required>
                     <option value="" disabled selected>Select Subject</option>
                     <option value="Java">Java</option>
                     <option value="DSA">DSA</option>
-                    <option value="OS">OS</option>
                     <option value="Math">Math</option>
-                    <option value="DBMS">DBMS</option>
                 </select>
             </div>
-
             <div class="form-group">
-                <label for="attendance">Attendance</label>
-                <div>
-                    <label>
-                        <input type="checkbox" id="present" value="Present"> Present
-                    </label>
-                    <label>
-                        <input type="checkbox" id="absent" value="Absent"> Absent
-                    </label>
-                </div>
+                <label for="attendance-status">Attendance</label>
+                <select id="attendance-status" required>
+                    <option value="" disabled selected>Mark Attendance</option>
+                    <option value="Present">Present</option>
+                    <option value="Absent">Absent</option>
+                </select>
             </div>
-
-            <button type="submit" id="submit-btn">Mark Attendance</button>
+            <button type="submit">Add/Update Attendance</button>
         </form>
-
-        <table class="marks-table" id="marks-table">
-            <thead>
-                <tr>
-                    <th>Student ID</th>
-                    <th>Subject</th>
-                    <th>Attendance</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody id="table-body"></tbody>
-        </table>
     </div>
 
     <script>
-        const form = document.getElementById("attendance-form");
-        const tableBody = document.getElementById("table-body");
-        const submitBtn = document.getElementById("submit-btn");
+        const themeToggle = document.getElementById("theme-toggle");
 
-        let editRow = null;
-
-        // Form Submit Event
-        form.addEventListener("submit", function (e) {
-            e.preventDefault();
-
-            const studentId = document.getElementById("student-id").value;
-            const subject = document.getElementById("subject").value;
-            const present = document.getElementById("present").checked ? "Present" : "Absent";
-            const absent = document.getElementById("absent").checked ? "Absent" : "Present";
-
-            if (editRow) {
-                // Update existing row
-                editRow.children[0].innerText = studentId;
-                editRow.children[1].innerText = subject;
-                editRow.children[2].innerText = present;
-
-                submitBtn.innerText = "Mark Attendance";
-                editRow = null;
-            } else {
-                // Add new row
-                const row = document.createElement("tr");
-
-                row.innerHTML = `
-                    <td>${studentId}</td>
-                    <td>${subject}</td>
-                    <td>${present}</td>
-                    <td>
-                        <button style="background: #f39c12; color: white;" onclick="editRowFunc(this)">Edit</button>
-                        <button style="background: #e74c3c; color: white;" onclick="deleteRowFunc(this)">Delete</button>
-                    </td>
-                `;
-
-                tableBody.appendChild(row);
-            }
-
-            form.reset();
+        themeToggle.addEventListener("click", () => {
+            document.body.classList.toggle("dark-mode");
+            themeToggle.textContent = document.body.classList.contains("dark-mode")
+                ? "Switch to Light Mode"
+                : "Switch to Dark Mode";
         });
-
-        // Edit Row Function
-        function editRowFunc(button) {
-            editRow = button.parentElement.parentElement;
-
-            document.getElementById("student-id").value = editRow.children[0].innerText;
-            document.getElementById("subject").value = editRow.children[1].innerText;
-            document.getElementById("present").checked = editRow.children[2].innerText === "Present";
-            document.getElementById("absent").checked = editRow.children[2].innerText === "Absent";
-
-            submitBtn.innerText = "Update Attendance";
-        }
-
-        // Delete Row Function
-        function deleteRowFunc(button) {
-            const row = button.parentElement.parentElement;
-            row.remove();
-        }
     </script>
 </body>
 </html>

@@ -22,8 +22,9 @@
             justify-content: space-between;
             align-items: center;
             padding: 10px 20px;
-            background-color: #4CAF50;
-            color: white;
+            background-color: white;
+            color: black;
+            transition: background-color 0.3s, color 0.3s;
         }
         header .logo {
             display: flex;
@@ -35,8 +36,9 @@
         header .navbar a {
             margin: 0 10px;
             text-decoration: none;
-            color: white;
+            color: black;
             font-weight: 500;
+            transition: color 0.3s;
         }
         header .navbar a.active {
             font-weight: 700;
@@ -95,7 +97,11 @@
             color: white;
         }
         .dark-mode header {
-            background-color: #333;
+            background-color: black;
+            color: white;
+        }
+        .dark-mode header .navbar a {
+            color: white;
         }
         .dark-mode table th {
             background-color: #444;
@@ -115,10 +121,10 @@
             <a href="faculty_add_update_marks.html">Add/Update Marks</a>
             <a href="faculty_marksattendance.html">Marks & Attendance</a>
             <a href="faculty_view_students.html">View Students</a>
-            <a href="../students/timetable.html">Time Table</a>
+            <a href="timetable.html">Time Table</a>
             <a href="../index.html">Logout</a>
         </div>
-        <button id="theme-toggle" style="background: none; border: none; color: white; cursor: pointer;">Switch to Dark Mode</button>
+        <button id="theme-toggle" style="background: none; border: none; color: black; cursor: pointer;">Switch to Dark Mode</button>
     </header>
 
     <!-- Content Section -->

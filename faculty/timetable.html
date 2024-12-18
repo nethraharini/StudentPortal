@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faculty Dashboard</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+    <link rel="shortcut icon" href="src/cit.jpg" type="image/png">
+    <link rel="stylesheet" href="facultystyles.css">
+</head>
+<body>
+    <header>
+        <div class="logo" title="Students portal CIT">
+            <img src="src/cit.png" alt="CIT Logo" style="width: 50px; height: 50px;">
+            <h2>Faculty Bridge</h2>
+        </div>
+        <div class="navbar">
+            <a href="faculty.html" class="active">
+                <span class="material-icons-sharp">home</span>
+                <h3>Home</h3>
+            </a>
+            <a href="faculty_post_announcements.html">
+                <span class="material-icons-sharp">announcement</span>
+                <h3>Post Announcements</h3>
+            </a>
+            <a href="faculty_add_update_marks.html">
+                <span class="material-icons-sharp">assessment</span>
+                <h3>Add/Update Marks</h3>
+            </a>
+            <a href="faculty_marksattendance.html">
+                <span class="material-icons-sharp">check_circle</span>
+                <h3>Marks & Attendance</h3>
+            </a>
+            <a href="faculty_view_students.html">
+                <span class="material-icons-sharp">grid_view</span>
+                <h3>View Students</h3>
+            </a>
+            <a href="timetable.html">
+                <span class="material-icons-sharp">today</span>
+                <h3>Time Table</h3>
+            </a>
+            <a href="../index.html">
+                <span class="material-icons-sharp">logout</span>
+                <h3>Logout</h3>
+            </a>
+        </div>
+        <div id="profile-btn">
+            <span class="material-icons-sharp">person</span>
+        </div>
+        <div class="theme-toggler">
+            <span class="material-icons-sharp active">light_mode</span>
+            <span class="material-icons-sharp">dark_mode</span>
+        </div>
+    </header>
+
+    <main style="margin: 0;">
+        <div class="timetable active" id="timetable">
+            <div>
+                <span id="prevDay">&lt;</span>
+                <h2>Today's Timetable</h2>
+                <span id="nextDay">&gt;</span>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Time</th>
+                        <th>Room No.</th>
+                        <th>Subject</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </main>
+
+</body>
+
+<script src="timetable.js"></script>
+<script src="app.js"></script>
+</html>
