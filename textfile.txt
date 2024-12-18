@@ -1,6 +1,0 @@
-I have done Faculty details and its flow is 
-├── Faculty → Faculty Dashboard
-  │     │      ├── Post Announcements
-  │     │      ├── Add/Update Marks (CAT, Midsem, Semester)
-  │     │      ├── Mark Attendance
-  │     │      └── View Department Students
