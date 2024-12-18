@@ -6,15 +6,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Faculty Dashboard</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
-    <!-- Fixed image path -->
-    <link rel="shortcut icon" href="src/cit.png" type="image/png">
-    <link rel="stylesheet" href="facultystyles.css"> <!-- Link to external CSS -->
+    <link rel="shortcut icon" href="src/cit.png" type="image/png">  
+    <link rel="stylesheet" href="facultystyles.css">  
+    <style>
+        /* Adjustments for Announcements */
+        .announcements {
+            margin: auto;
+            width: 60%;
+            text-align: center;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .announcements h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .updates .message {
+            padding: 15px;
+            margin: 10px 0;
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .updates .message p {
+            margin: 0;
+        }
+
+        .updates .message small {
+            display: block;
+            margin-top: 5px;
+            color: #777;
+        }
+
+        /* Adjust layout */
+        main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80vh;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
     <!-- Header Section -->
     <header>
         <div class="logo" title="Students portal CIT">
-            <!-- Debugging: Added 'images/cit.png' to verify path -->
             <img src="src/cit.png" alt="CIT Logo" style="width: 50px; height: 50px;">
             <h2>Faculty Bridge</h2>
         </div>
@@ -39,11 +83,10 @@
                 <span class="material-icons-sharp">grid_view</span>
                 <h3>View Students</h3>
             </a>
-            <a href="../students/timetable.html">
+            <a href="timetable.html">
                 <span class="material-icons-sharp">today</span>
                 <h3>Time Table</h3>
             </a>
-
             <a href="../index.html">
                 <span class="material-icons-sharp">logout</span>
                 <h3>Logout</h3>
@@ -57,113 +100,56 @@
             <span class="material-icons-sharp">dark_mode</span>
         </div>
     </header>
-
-    <!-- Main Container -->
-    <div class="container">
-        <!-- Sidebar Section -->
-        <aside>
-            <div class="profile">
-                <div class="top">
-                    <div class="profile-photo">
-                        <img src="./images/cit.jpg" alt="Profile Picture">
-                    </div>
-                    <div class="info">
-                        <p>Hey, <b>Sri</b></p>
-                        <small class="text-muted">2403717662222040</small>
-                    </div>
+<!-- Main Container -->
+<div class="container">
+    <!-- Sidebar Section -->
+    <aside>
+        <div class="profile">
+            <div class="top">
+                <div class="profile-photo">
+                    <img src="./images/cit.jpg" alt="Profile Picture">
                 </div>
-                <div class="about">
-                    <h5>Course</h5>
-                    <p>MCA-Master of Computer Application</p>
-                    <h5>DOB</h5>
-                    <p>21-08-2003</p>
-                    <h5>Contact</h5>
-                    <p>9025122027</p>
-                    <h5>Email</h5>
-                    <p>2403717662222040@cit.edu.in</p>
-                    <h5>Address</h5>
-                    <p>Coimbatore</p>
+                <div class="info">
+                    <p>Hey, <b>Sri</b></p>
+                    <small class="text-muted">2403717662222040</small>
                 </div>
             </div>
-        </aside>
-
-        <!-- Main Section -->
-        <main>
-            <div class="timetable" id="timetable">
-                <div>
-                    <span id="prevDay">&lt;</span>
-                    <h2>Today's Timetable</h2>
-                    <span id="nextDay">&gt;</span>
-                </div>
-                <span class="closeBtn" onclick="timeTableAll()">X</span>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Time</th>
-                            <th>Room No.</th>
-                            <th>Subject</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>9:00 AM - 10:00 AM</td>
-                            <td>101</td>
-                            <td>Mathematics</td>
-                        </tr>
-                        <tr>
-                            <td>10:00 AM - 11:00 AM</td>
-                            <td>102</td>
-                            <td>Computer Networks</td>
-                        </tr>
-                        <tr>
-                            <td>11:00 AM - 12:00 PM</td>
-                            <td>203</td>
-                            <td>Database Management</td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div class="about">
+                <h5>Course</h5>
+                <p>MCA-Master of Computer Application</p>
+                <h5>DOB</h5>
+                <p>21-08-2003</p>
+                <h5>Contact</h5>
+                <p>9025122027</p>
+                <h5>Email</h5>
+                <p>2403717662222040@cit.edu.in</p>
+                <h5>Address</h5>
+                <p>Coimbatore</p>
             </div>
-        </main>
+        </div>
+    </aside>
 
-        <!-- Right Section -->
-        <div class="right">
-            <div class="announcements">
-                <h2>Announcements</h2>
-                <div class="updates">
-                    <div class="message">
-                        <p><b>Academic</b> Summer training internship with Live Projects.</p>
-                        <small class="text-muted">2 Minutes Ago</small>
-                    </div>
-                    <div class="message">
-                        <p><b>Co-curricular</b> Global internship opportunity by Student organization.</p>
-                        <small class="text-muted">10 Minutes Ago</small>
-                    </div>
-                    <div class="message">
-                        <p><b>Examination</b> Instructions for Mid Term Examination.</p>
-                        <small class="text-muted">Yesterday</small>
-                    </div>
+
+    <!-- Main Section -->
+    <main>
+        <div class="announcements">
+            <h2>Announcements</h2>
+            <div class="updates">
+                <div class="message">
+                    <p><b>Academic:</b> Summer training internship with Live Projects.</p>
+                    <small class="text-muted">2 Minutes Ago</small>
                 </div>
-            </div>
-            <div class="upcoming_exams">
-                <h2>Upcoming Exams</h2>
-                <div class="exam">
-                    <p>Data Structures - 21/12/2024</p>
+                <div class="message">
+                    <p><b>Co-curricular:</b> Global internship opportunity by Student organization.</p>
+                    <small class="text-muted">10 Minutes Ago</small>
                 </div>
-                <div class="exam">
-                    <p>Machine Learning - 23/12/2024</p>
-                </div>
-                <div class="exam">
-                    <p>Operating Systems - 25/12/2024</p>
+                <div class="message">
+                    <p><b>Examination:</b> Instructions for Mid Term Examination.</p>
+                    <small class="text-muted">Yesterday</small>
                 </div>
             </div>
         </div>
-    </div>
-
-    <!-- Debugging Image -->
-    
-
-    <!-- Scripts -->
-    <script src="../students/timetable.js"></script>
-    <script src="../students/app.js"></script>
+    </main>
+    <script src="fetchFacultyData.js"></script>
 </body>
 </html>

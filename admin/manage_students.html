@@ -2,30 +2,115 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manage Students</title>
-    <script src="manage_students.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+    <link rel="stylesheet" href="adminstyles.css">
 </head>
 <body>
-    <h2>Manage Students</h2>
-    <form id="student-form">
-        <input type="text" id="student-name" placeholder="Name" required>
-        <input type="number" id="student-age" placeholder="Age" required>
-        <button type="submit">Add Student</button>
-    </form>
-    <table id="students-table">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Age</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody id="student-list">
-            <!-- Student rows will be dynamically populated here -->
-        </tbody>
-    </table>
+    <!-- Header Section -->
+    <header>
+        <div class="logo" title="Students portal CIT">
+            <img src="cit.jpg" alt="Logo">
+            <h2>Admin Bridge</h2>
+        </div>
+        <!-- Navigation Menu -->
+        <div class="navbar">
+            <a href="admin_dashboard.html">
+                <span class="material-icons-sharp">dashboard</span>
+                <h3>Dashboard</h3>
+            </a>
+            <a href="manage_students.html" class="active">
+                <span class="material-icons-sharp">person</span>
+                <h3>Manage Students</h3>
+            </a>
+            <a href="manage_faculty.html">
+                <span class="material-icons-sharp">school</span>
+                <h3>Manage Faculty</h3>
+            </a>
+            <a href="../index.html">
+                <span class="material-icons-sharp">logout</span>
+                <h3>Logout</h3>
+            </a>
+        </div>
+    </header>
 
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Sidebar Section -->
+        <aside>
+            <div class="profile">
+                <div class="top">
+                    <div class="profile-photo">
+                        <img src="profile-admin.jpg" alt="Admin Profile">
+                    </div>
+                    <div class="info">
+                        <p>Hey, <b>Admin</b></p>
+                        <small class="text-muted">ID: 1001</small>
+                    </div>
+                </div>
+                <div class="about">
+                    <h5>Email</h5>
+                    <p>admin@organization.com</p>
+                    <h5>Contact</h5>
+                    <p>+1 123-456-7890</p>
+                    <h5>Address</h5>
+                    <p>123 Admin Street, City</p>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Section -->
+        <main>
+            <div class="manage-students-section">
+                <h2>Manage Students</h2>
+                <!-- Form Container -->
+                <form id="student-form" class="student-form">
+                    <label for="student-id">Student ID:</label>
+                    <input type="text" id="student-id" placeholder="Enter Student ID" required>
+                    
+                    <label for="student-name">Name:</label>
+                    <input type="text" id="student-name" placeholder="Enter Student Name" required>
+                    
+                    <label for="student-age">Age:</label>
+                    <input type="number" id="student-age" placeholder="Enter Student Age" required>
+                    
+                    <label for="student-email">Email:</label>
+                    <input type="email" id="student-email" placeholder="Enter Student Email" required>
+                    
+                    <label for="student-phone">Phone:</label>
+                    <input type="tel" id="student-phone" placeholder="Enter Student Phone" required>
+                    
+                    <label for="student-address">Address:</label>
+                    <input type="text" id="student-address" placeholder="Enter Student Address" required>
+                    
+                    <button type="submit">Add Student</button>
+                </form>
+
+                <!-- Table Container -->
+                <div class="table-container">
+                    <table id="students-table">
+                        <thead>
+                            <tr>
+                                <th>Student ID</th>
+                                <th>Name</th>
+                                <th>Age</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Address</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="student-list">
+                            <!-- Student rows will be dynamically populated here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Script -->
     <script src="manage_students.js"></script>
 </body>
 </html>

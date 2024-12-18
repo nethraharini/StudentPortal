@@ -5,192 +5,232 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add/Update Marks</title>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
-    <link rel="shortcut icon" href="src/cit.png" type="image/png">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Favicon -->
+    <link rel="icon" href="src/cit.png" type="image/png">
     <style>
-        /* Marks Section Styles */
+        /* General Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: white;
+            color: black;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        header .logo {
+            display: flex;
+            align-items: center;
+        }
+        header .logo img {
+            margin-right: 10px;
+        }
+        header .navbar a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: black;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        header .navbar a.active {
+            font-weight: 700;
+            text-decoration: underline;
+        }
+        .content {
+            padding: 20px;
+        }
         .marks-container {
-            width: 90%;
-            margin: 2rem auto;
-            padding: 1.5rem;
-            background: #f9f9f9;
-            border-radius: 10px;
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
+            margin: auto;
         }
-
-        .marks-container h2 {
-            margin-bottom: 1rem;
-            color: #333;
-            text-align: center;
-            font-size: 1.8rem;
-        }
-
-        form {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
         .form-group {
-            display: flex;
-            flex-direction: column;
+            margin-bottom: 15px;
         }
-
         .form-group label {
-            font-size: 1rem;
-            color: #555;
-            margin-bottom: 0.3rem;
+            display: block;
+            margin-bottom: 5px;
         }
-
         .form-group input, .form-group select {
-            padding: 0.8rem;
-            font-size: 1rem;
+            width: 100%;
+            padding: 10px;
             border: 1px solid #ccc;
             border-radius: 5px;
         }
-
         button {
-            padding: 0.8rem;
-            background-color: #0078d4;
-            color: #fff;
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
             border: none;
-            font-size: 1rem;
             border-radius: 5px;
             cursor: pointer;
-            transition: background 0.3s ease;
         }
-
         button:hover {
-            background-color: #005fa3;
+            background-color: #45a049;
         }
-
-        .marks-table {
+        table {
             width: 100%;
-            margin-top: 2rem;
             border-collapse: collapse;
+            margin-top: 20px;
         }
-
-        .marks-table th, .marks-table td {
-            padding: 0.8rem;
+        table th, table td {
             border: 1px solid #ddd;
-            text-align: center;
+            padding: 10px;
+            text-align: left;
         }
-
-        .marks-table th {
-            background-color: #0078d4;
-            color: #fff;
+        table th {
+            background-color: #f4f4f4;
         }
-
-        .marks-table tr:nth-child(even) {
-            background-color: #f2f2f2;
+        .actions button {
+            margin: 0 5px;
         }
-
-        .marks-table tr:hover {
-            background-color: #f1f9ff;
+        /* Dark Mode Styles */
+        .dark-mode {
+            background-color: #121212;
+            color: white;
+        }
+        .dark-mode header {
+            background-color: black;
+            color: white;
+        }
+        .dark-mode header .navbar a {
+            color: white;
+        }
+        .dark-mode table th {
+            background-color: #444;
         }
     </style>
 </head>
 <body>
-    <div class="marks-container">
-        <h2>Add/Update Student Marks</h2>
-        <form id="marks-form">
-            <div class="form-group">
-                <label for="student-id">Student ID</label>
-                <input type="text" id="student-id" placeholder="Enter Student ID" required>
-            </div>
+    <!-- Header Section -->
+    <header>
+        <div class="logo">
+            <img src="src/cit.png" alt="CIT Logo" style="width: 40px; height: 40px;">
+            <h2>Faculty Bridge</h2>
+        </div>
+        <div class="navbar">
+            <a href="faculty.html" class="active">Home</a>
+            <a href="faculty_post_announcements.html">Post Announcements</a>
+            <a href="faculty_add_update_marks.html">Add/Update Marks</a>
+            <a href="faculty_marksattendance.html">Marks & Attendance</a>
+            <a href="faculty_view_students.html">View Students</a>
+            <a href="timetable.html">Time Table</a>
+            <a href="../index.html">Logout</a>
+        </div>
+        <button id="theme-toggle" style="background: none; border: none; color: black; cursor: pointer;">Switch to Dark Mode</button>
+    </header>
 
-            <div class="form-group">
-                <label for="subject">Subject</label>
-                <select id="subject" required>
-                    <option value="" disabled selected>Select Subject</option>
-                    <option value="Java">Java</option>
-                    <option value="DSA">DSA</option>
-                    <option value="OS">OS</option>
-                    <option value="Math">Math</option>
-                    <option value="DBMS">DBMS</option>
-                </select>
-            </div>
+    <!-- Content Section -->
+    <div class="content">
+        <div class="marks-container">
+            <h2>Add/Update Student Marks</h2>
+            <form id="marks-form">
+                <div class="form-group">
+                    <label for="student-id">Student ID</label>
+                    <input type="text" id="student-id" placeholder="Enter Student ID" required>
+                </div>
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <select id="subject" required>
+                        <option value="" disabled selected>Select Subject</option>
+                        <option value="Java">Java</option>
+                        <option value="DSA">DSA</option>
+                        <option value="OS">OS</option>
+                        <option value="Math">Math</option>
+                        <option value="DBMS">DBMS</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="marks">Marks</label>
+                    <input type="number" id="marks" placeholder="Enter Marks" min="0" max="100" required>
+                </div>
+                <button type="submit">Add Marks</button>
+            </form>
 
-            <div class="form-group">
-                <label for="marks">Marks</label>
-                <input type="number" id="marks" placeholder="Enter Marks" min="0" max="100" required>
-            </div>
-
-            <button type="submit" id="submit-btn">Add Marks</button>
-        </form>
-
-        <table class="marks-table" id="marks-table">
-            <thead>
-                <tr>
-                    <th>Student ID</th>
-                    <th>Subject</th>
-                    <th>Marks</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody id="table-body"></tbody>
-        </table>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Student ID</th>
+                        <th>Subject</th>
+                        <th>Marks</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="table-body"></tbody>
+            </table>
+        </div>
     </div>
 
+    <!-- JavaScript -->
     <script>
         const form = document.getElementById("marks-form");
         const tableBody = document.getElementById("table-body");
-        const submitBtn = document.getElementById("submit-btn");
-
+        const themeToggle = document.getElementById("theme-toggle");
         let editRow = null;
 
-        // Form Submit Event
-        form.addEventListener("submit", function (e) {
+        form.addEventListener("submit", (e) => {
             e.preventDefault();
-
             const studentId = document.getElementById("student-id").value;
             const subject = document.getElementById("subject").value;
             const marks = document.getElementById("marks").value;
 
-            if (editRow) {
-                // Update existing row
-                editRow.children[0].innerText = studentId;
-                editRow.children[1].innerText = subject;
-                editRow.children[2].innerText = marks;
+            const existingRows = Array.from(tableBody.getElementsByTagName("tr"));
+            const isDuplicate = existingRows.some(row => 
+                row.children[0].textContent === studentId && 
+                row.children[1].textContent === subject
+            );
 
-                submitBtn.innerText = "Add Marks";
-                editRow = null;
+            if (isDuplicate) {
+                alert("Duplicate entry not allowed!");
             } else {
-                // Add new row
-                const row = document.createElement("tr");
-
-                row.innerHTML = `
-                    <td>${studentId}</td>
-                    <td>${subject}</td>
-                    <td>${marks}</td>
-                    <td>
-                        <button style="background: #f39c12; color: white;" onclick="editRowFunc(this)">Edit</button>
-                        <button style="background: #e74c3c; color: white;" onclick="deleteRowFunc(this)">Delete</button>
-                    </td>
-                `;
-
-                tableBody.appendChild(row);
+                if (editRow) {
+                    editRow.children[0].textContent = studentId;
+                    editRow.children[1].textContent = subject;
+                    editRow.children[2].textContent = marks;
+                    editRow = null;
+                } else {
+                    const row = document.createElement("tr");
+                    row.innerHTML = `
+                        <td>${studentId}</td>
+                        <td>${subject}</td>
+                        <td>${marks}</td>
+                        <td class="actions">
+                            <button class="edit-btn" onclick="editRowFunc(this)">Edit</button>
+                            <button class="delete-btn" onclick="deleteRowFunc(this)">Delete</button>
+                        </td>
+                    `;
+                    tableBody.appendChild(row);
+                }
+                form.reset();
             }
-
-            form.reset();
         });
 
-        // Edit Row Function
-        function editRowFunc(button) {
-            editRow = button.parentElement.parentElement;
+        window.editRowFunc = (btn) => {
+            editRow = btn.closest("tr");
+            document.getElementById("student-id").value = editRow.children[0].textContent;
+            document.getElementById("subject").value = editRow.children[1].textContent;
+            document.getElementById("marks").value = editRow.children[2].textContent;
+        };
 
-            document.getElementById("student-id").value = editRow.children[0].innerText;
-            document.getElementById("subject").value = editRow.children[1].innerText;
-            document.getElementById("marks").value = editRow.children[2].innerText;
+        window.deleteRowFunc = (btn) => {
+            const row = btn.closest("tr");
+            tableBody.removeChild(row);
+        };
 
-            submitBtn.innerText = "Update Marks";
-        }
-
-        // Delete Row Function
-        function deleteRowFunc(button) {
-            const row = button.parentElement.parentElement;
-            row.remove();
-        }
+        themeToggle.addEventListener("click", () => {
+            document.body.classList.toggle("dark-mode");
+            themeToggle.textContent = 
+                document.body.classList.contains("dark-mode") 
+                ? "Switch to Light Mode" 
+                : "Switch to Dark Mode";
+        });
     </script>
 </body>
 </html>

@@ -461,3 +461,313 @@ main .timetable.active .closeBtn{
         padding: 2rem;
     }
 }
+/* Form container styled to display in a row */
+.faculty-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Adds space between the fields */
+    justify-content: space-between; /* Distributes form elements evenly */
+}
+
+.faculty-form label {
+    width: 100%; /* Ensures labels take full width */
+    font-size: 14px;
+}
+
+.faculty-form input {
+    width: 48%; /* Each input takes 48% of the container width */
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.faculty-form button {
+    padding: 12px 20px;
+    background-color: #4CAF50; /* Green button */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.faculty-form button:hover {
+    background-color: #45a049;
+}
+
+.table-container {
+    margin-top: 30px;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table th, table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+/* Form container styled to display in a row */
+.student-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Adds space between the fields */
+    justify-content: space-between; /* Distributes form elements evenly */
+}
+
+/* Align labels */
+.student-form label {
+    width: 100%; /* Ensures labels take full width above the input fields */
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+/* Input fields styled */
+.student-form input {
+    width: 48%; /* Each input takes up about 48% of the container width */
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+/* Submit button styling */
+.student-form button {
+    padding: 12px 20px;
+    background-color: #4CAF50; /* Green button */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 15px;
+}
+
+/* Submit button hover effect */
+.student-form button:hover {
+    background-color: #45a049;
+}
+
+/* Styling for the table container */
+.table-container {
+    margin-top: 30px;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table th, table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+/* Styling the Announcements Section */
+.announcements-section {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.announcements-section h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+#announcement-form {
+    display: flex;
+    flex-direction: column;
+}
+
+#announcement-text {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    width: 100%;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* Styling the individual announcements */
+.announcement {
+    background-color: #ffffff;
+    margin-bottom: 20px;
+    padding: 15px;
+    border-left: 5px solid #4CAF50;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.announcement h3 {
+    font-size: 20px;
+    color: #4CAF50;
+    margin-bottom: 10px;
+}
+
+.announcement p {
+    font-size: 16px;
+    color: #555;
+}
+
+.announcement button {
+    background-color: #f44336;
+    margin-top: 10px;
+}
+
+.announcement button:hover {
+    background-color: #e53935;
+}
+@media (max-width: 768px) {
+    .announcements-container {
+        flex-direction: column;
+    }
+
+    #announcement-form,
+    .announcement-list {
+        width: 100%;
+    }
+}
+/* Styling the Announcements Section */
+.announcements-section {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.announcements-section h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Flex container for the form and list */
+.announcements-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px; /* Add some space between the form and the list */
+}
+
+/* Announcement Form */
+#announcement-form {
+    width: 40%; /* Form takes up 40% of the container */
+    display: flex;
+    flex-direction: column;
+}
+
+#announcement-text {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    width: 100%;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* Announcements List */
+.announcement-list {
+    width: 55%; /* List takes up 55% of the container */
+    display: flex;
+    flex-direction: column;
+}
+
+.announcement {
+    background-color: #ffffff;
+    margin-bottom: 20px;
+    padding: 15px;
+    border-left: 5px solid #4CAF50;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.announcement h3 {
+    font-size: 20px;
+    color: #4CAF50;
+    margin-bottom: 10px;
+}
+
+.announcement p {
+    font-size: 16px;
+    color: #555;
+}
+
+.announcement button {
+    background-color: #f44336;
+    margin-top: 10px;
+}
+
+.announcement button:hover {
+    background-color: #e53935;
+}
+.right {
+    position: fixed; /* Fix the position of announcements */
+    top: 4rem; /* Adjust based on header height */
+    right: 0;
+    width: 25%; /* Adjust width as necessary */
+    padding: 2rem;
+    background-color: var(--color-background); /* Maintain consistent background */
+    box-shadow: 0 2rem 3rem var(--color-light);
+    z-index: 1000; /* Keep it above other content */
+}
+
+.right .announcements h2 {
+    margin-bottom: .8rem;
+}
+
+.right .announcements .updates {
+    background-color: var(--color-white);
+    padding: var(--card-padding);
+    border-radius: var(--card-border-radius);
+    box-shadow: var(--box-shadow);
+    transition: all 300ms ease;
+}
+
+.right .announcements .updates:hover {
+    box-shadow: none;
+}
+

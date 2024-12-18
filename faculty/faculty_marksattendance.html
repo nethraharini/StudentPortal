@@ -3,107 +3,172 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mark Attendance</title>
-    <link rel="shortcut icon" href="src/cit.png" type="image/png">
-    <link rel="stylesheet" href="facultystyles.css">
+    <title>Attendance Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --bg-color: white;
+            --text-color: black;
+            --header-bg: white;
+            --header-text: black;
+            --button-bg: lightgray;
+            --button-text: black;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f2f2f2;
+            font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
         }
-        .container {
-            width: 80%;
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: #ffffff;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        h1 {
-            text-align: center;
-            color: #333333;
-        }
-        form {
+
+        header {
             display: flex;
-            flex-direction: column;
-            gap: 15px;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: var(--header-bg);
+            color: var(--header-text);
+            border-bottom: 1px solid #ccc;
         }
-        label {
-            font-size: 14px;
-            color: #333333;
-        }
-        input[type="date"], select, input[type="checkbox"] {
-            padding: 10px;
-            font-size: 14px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-        }
-        .students-list {
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-        }
-        .student {
+
+        header .logo {
             display: flex;
             align-items: center;
         }
-        .student input[type="checkbox"] {
+
+        header .logo img {
             margin-right: 10px;
         }
-        button {
-            padding: 10px;
-            background-color: #4CAF50;
-            color: #ffffff;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background-color 0.3s;
+
+        header .navbar a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
         }
+
+        header .navbar a.active {
+            text-decoration: underline;
+        }
+
+        button {
+            padding: 10px 15px;
+            background-color: var(--button-bg);
+            color: var(--button-text);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
         button:hover {
-            background-color: #45a049;
+            opacity: 0.9;
+        }
+
+        .container {
+            padding: 20px;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table th, table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        table th {
+            background-color: #f4f4f4;
+        }
+
+        .dark-mode {
+            --bg-color: black;
+            --text-color: white;
+            --header-bg: #333;
+            --header-text: white;
+            --button-bg: gray;
+            --button-text: white;
         }
     </style>
 </head>
 <body>
+    <header>
+        <div class="logo">
+            <img src="src/cit.png" alt="CIT Logo" style="width: 40px; height: 40px;">
+            <h2>Faculty Bridge</h2>
+        </div>
+        <div class="navbar">
+            <a href="faculty.html" class="active">Home</a>
+            <a href="faculty_post_announcements.html">Post Announcements</a>
+            <a href="faculty_add_update_marks.html">Add/Update Marks</a>
+            <a href="faculty_marksattendance.html">Marks & Attendance</a>
+            <a href="faculty_view_students.html">View Students</a>
+            <a href="timetable.html">Time Table</a>
+            <a href="../index.html">Logout</a>
+        </div>
+        <button id="theme-toggle">Switch to Dark Mode</button>
+    </header>
+
     <div class="container">
-        <h1>Mark Attendance</h1>
-        <form action="submit_attendance.php" method="post">
-            <label for="attendance_date">Date:</label>
-            <input type="date" id="attendance_date" name="attendance_date" required>
-
-            <label for="attendance_subject">Subject:</label>
-            <select id="attendance_subject" name="attendance_subject" required>
-                <option value="math">Math</option>
-                <option value="Java">Java</option>
-                <option value="Python">Python</option>
-                <option value="DSA">DSA</option>
-                <option value="DBMS">DBMS</option>
-                <option value="OS">OS</option>
-                <!-- Add more subjects as needed -->
-            </select>
-
-            <label>Students Present:</label>
-            <div class="students-list">
-                <!-- Example student checkboxes, this could be dynamically generated from a database in a real scenario -->
-                <div class="student">
-                    <input type="checkbox" id="student1" name="students[]" value="student1">
-                    <label for="student1">Student 1</label>
-                </div>
-                <div class="student">
-                    <input type="checkbox" id="student2" name="students[]" value="student2">
-                    <label for="student2">Student 2</label>
-                </div>
-                <div class="student">
-                    <input type="checkbox" id="student3" name="students[]" value="student3">
-                    <label for="student3">Student 3</label>
-                </div>
-                <!-- More students as necessary -->
+        <h2>Add/Update Attendance</h2>
+        <form id="attendance-form">
+            <div class="form-group">
+                <label for="attendance-student-id">Student ID</label>
+                <input type="text" id="attendance-student-id" placeholder="Enter Student ID" required>
             </div>
-
-            <button type="submit">Mark Attendance</button>
+            <div class="form-group">
+                <label for="attendance-subject">Subject</label>
+                <select id="attendance-subject" required>
+                    <option value="" disabled selected>Select Subject</option>
+                    <option value="Java">Java</option>
+                    <option value="DSA">DSA</option>
+                    <option value="Math">Math</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="attendance-status">Attendance</label>
+                <select id="attendance-status" required>
+                    <option value="" disabled selected>Mark Attendance</option>
+                    <option value="Present">Present</option>
+                    <option value="Absent">Absent</option>
+                </select>
+            </div>
+            <button type="submit">Add/Update Attendance</button>
         </form>
     </div>
+
+    <script>
+        const themeToggle = document.getElementById("theme-toggle");
+
+        themeToggle.addEventListener("click", () => {
+            document.body.classList.toggle("dark-mode");
+            themeToggle.textContent = document.body.classList.contains("dark-mode")
+                ? "Switch to Light Mode"
+                : "Switch to Dark Mode";
+        });
+    </script>
 </body>
 </html>
