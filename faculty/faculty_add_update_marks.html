@@ -181,50 +181,60 @@
             const subject = document.getElementById("subject").value;
             const marks = document.getElementById("marks").value;
 
-            if (editRow) {
-                // Update existing row
-                editRow.children[0].innerText = studentId;
-                editRow.children[1].innerText = subject;
-                editRow.children[2].innerText = marks;
+            const existingRows = Array.from(tableBody.getElementsByTagName("tr"));
+            let isDuplicate = false;
+            let rowToUpdate = null;
 
-                submitBtn.innerText = "Add Marks";
-                editRow = null;
+            existingRows.forEach(row => {
+                if (row.children[0].textContent === studentId && row.children[1].textContent === subject) {
+                    isDuplicate = true;
+                    rowToUpdate = row;
+                }
+            });
+
+            if (isDuplicate && editRow) {
+                // Update existing entry
+                editRow.children[0].textContent = studentId;
+                editRow.children[1].textContent = subject;
+                editRow.children[2].textContent = marks;
+                editRow = null;  // Reset editRow after update
             } else {
-                // Add new row
+                // Add new entry
                 const row = document.createElement("tr");
-
                 row.innerHTML = `
                     <td>${studentId}</td>
                     <td>${subject}</td>
                     <td>${marks}</td>
-                    <td>
-                        <button style="background: #f39c12; color: white;" onclick="editRowFunc(this)">Edit</button>
-                        <button style="background: #e74c3c; color: white;" onclick="deleteRowFunc(this)">Delete</button>
+                    <td class="actions">
+                        <button class="edit-btn" onclick="editRowFunc(this)">Edit</button>
+                        <button class="delete-btn" onclick="deleteRowFunc(this)">Delete</button>
                     </td>
                 `;
-
                 tableBody.appendChild(row);
             }
 
             form.reset();
         });
 
-        // Edit Row Function
-        function editRowFunc(button) {
-            editRow = button.parentElement.parentElement;
+        window.editRowFunc = (btn) => {
+            editRow = btn.closest("tr");
+            document.getElementById("student-id").value = editRow.children[0].textContent;
+            document.getElementById("subject").value = editRow.children[1].textContent;
+            document.getElementById("marks").value = editRow.children[2].textContent;
+        };
 
-            document.getElementById("student-id").value = editRow.children[0].innerText;
-            document.getElementById("subject").value = editRow.children[1].innerText;
-            document.getElementById("marks").value = editRow.children[2].innerText;
+        window.deleteRowFunc = (btn) => {
+            const row = btn.closest("tr");
+            tableBody.removeChild(row);
+        };
 
-            submitBtn.innerText = "Update Marks";
-        }
-
-        // Delete Row Function
-        function deleteRowFunc(button) {
-            const row = button.parentElement.parentElement;
-            row.remove();
-        }
+        themeToggle.addEventListener("click", () => {
+            document.body.classList.toggle("dark-mode");
+            themeToggle.textContent = 
+                document.body.classList.contains("dark-mode") 
+                ? "Switch to Light Mode" 
+                : "Switch to Dark Mode";
+        });
     </script>
 </body>
 </html>

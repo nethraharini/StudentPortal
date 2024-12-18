@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mark Attendance</title>
-    <link rel="shortcut icon" href="src/cit.png" type="image/png">
-    <link rel="stylesheet" href="facultystyles.css">
+    <title>Marks & Attendance</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-color: white;
@@ -20,57 +19,139 @@
             font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
         }
-        .container {
-            width: 80%;
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: #ffffff;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        h1 {
-            text-align: center;
-            color: #333333;
-        }
-        form {
+
+        header {
             display: flex;
-            flex-direction: column;
-            gap: 15px;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: var(--header-bg);
+            color: var(--header-text);
+            border-bottom: 1px solid #ccc;
         }
-        label {
-            font-size: 14px;
-            color: #333333;
-        }
-        input[type="date"], select, input[type="checkbox"] {
-            padding: 10px;
-            font-size: 14px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-        }
-        .students-list {
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-        }
-        .student {
+
+        header .logo {
             display: flex;
             align-items: center;
         }
-        .student input[type="checkbox"] {
+
+        header .logo img {
             margin-right: 10px;
         }
-        button {
-            padding: 10px;
-            background-color: #4CAF50;
-            color: #ffffff;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background-color 0.3s;
+
+        header .navbar a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
         }
+
+        header .navbar a.active {
+            text-decoration: underline;
+        }
+
+        button {
+            padding: 10px 15px;
+            background-color: var(--button-bg);
+            color: var(--button-text);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
         button:hover {
-            background-color: #45a049;
+            opacity: 0.9;
+        }
+
+        .container {
+            padding: 20px;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .student-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 5px;
+        }
+
+        .student-row span {
+            flex-grow: 1;
+            text-align: center;
+        }
+
+        .subject-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .subject-buttons button {
+            padding: 5px 10px;
+            border: 1px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .subject-buttons button.present {
+            background-color: green;
+            color: white;
+        }
+
+        .subject-buttons button.absent {
+            background-color: red;
+            color: white;
+        }
+
+        .attendance-record {
+            padding: 10px;
+            border-top: 1px solid #ddd;
+            margin-top: 10px;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .attendance-record span {
+            display: block;
+        }
+
+        .dark-mode {
+            --bg-color: black;
+            --text-color: white;
+            --header-bg: #333;
+            --header-text: white;
+            --button-bg: gray;
+            --button-text: white;
+        }
+
+        .attendance-table {
+            margin-top: 20px;
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .attendance-table th, .attendance-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+
+        .attendance-table th {
+            background-color: #f4f4f4;
+        }
+
+        .attendance-table .present {
+            background-color: green;
+            color: white;
+        }
+
+        .attendance-table .absent {
+            background-color: red;
+            color: white;
         }
     </style>
 </head>
@@ -93,42 +174,113 @@
     </header>
 
     <div class="container">
-        <h1>Mark Attendance</h1>
-        <form action="submit_attendance.php" method="post">
-            <label for="attendance_date">Date:</label>
-            <input type="date" id="attendance_date" name="attendance_date" required>
-
-            <label for="attendance_subject">Subject:</label>
-            <select id="attendance_subject" name="attendance_subject" required>
-                <option value="math">Math</option>
-                <option value="Java">Java</option>
-                <option value="Python">Python</option>
-                <option value="DSA">DSA</option>
-                <option value="DBMS">DBMS</option>
-                <option value="OS">OS</option>
-                <!-- Add more subjects as needed -->
-            </select>
-
-            <label>Students Present:</label>
-            <div class="students-list">
-                <!-- Example student checkboxes, this could be dynamically generated from a database in a real scenario -->
-                <div class="student">
-                    <input type="checkbox" id="student1" name="students[]" value="student1">
-                    <label for="student1">Student 1</label>
-                </div>
-                <div class="student">
-                    <input type="checkbox" id="student2" name="students[]" value="student2">
-                    <label for="student2">Student 2</label>
-                </div>
-                <div class="student">
-                    <input type="checkbox" id="student3" name="students[]" value="student3">
-                    <label for="student3">Student 3</label>
-                </div>
-                <!-- More students as necessary -->
-            </div>
-
-            <button type="submit">Mark Attendance</button>
-        </form>
+        <h2>Dynamic Attendance Management</h2>
+        <div id="attendance-container">
+            <!-- Student rows will be generated dynamically -->
+        </div>
+        <div id="attendance-records">
+            <!-- Attendance records will be displayed here -->
+            <table class="attendance-table">
+                <thead>
+                    <tr>
+                        <th>Student ID</th>
+                        <th>Java</th>
+                        <th>DSA</th>
+                        <th>OS</th>
+                        <th>Math</th>
+                        <th>DBMS</th>
+                    </tr>
+                </thead>
+                <tbody id="attendance-table-body">
+                    <!-- Attendance records rows will be dynamically added here -->
+                </tbody>
+            </table>
+        </div>
     </div>
+
+    <script>
+        const themeToggle = document.getElementById("theme-toggle");
+
+        themeToggle.addEventListener("click", () => {
+            document.body.classList.toggle("dark-mode");
+            themeToggle.textContent = document.body.classList.contains("dark-mode")
+                ? "Switch to Light Mode"
+                : "Switch to Dark Mode";
+        });
+
+        const attendanceContainer = document.getElementById('attendance-container');
+        const attendanceTableBody = document.getElementById('attendance-table-body');
+
+        // Array to store attendance records
+        let attendanceRecordsArray = [];
+
+        // Function to generate student rows
+        function generateStudentRows() {
+            const students = Array.from({ length: 10 }, (_, index) => ({
+                id: `24037176622${index + 1}`,
+                name: `Student ${index + 1}`
+            }));
+
+            attendanceContainer.innerHTML = students.map(student => `
+                <div class="student-row">
+                    <span>${student.name}</span>
+                    <div class="subject-buttons" data-student-id="${student.id}">
+                        <button onclick="markAttendance('${student.id}', 'Java')">Java</button>
+                        <button onclick="markAttendance('${student.id}', 'DSA')">DSA</button>
+                        <button onclick="markAttendance('${student.id}', 'OS')">OS</button>
+                        <button onclick="markAttendance('${student.id}', 'Math')">Math</button>
+                        <button onclick="markAttendance('${student.id}', 'DBMS')">DBMS</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Function to mark attendance
+        function markAttendance(studentId, subject) {
+            const studentRow = document.querySelector(`.subject-buttons[data-student-id="${studentId}"]`);
+            const subjectButton = studentRow.querySelector(`button[onclick*="${subject}"]`);
+            const recordIndex = attendanceRecordsArray.findIndex(record => record.studentId === studentId && record.subject === subject);
+
+            if (recordIndex !== -1) {
+                // Update existing record
+                attendanceRecordsArray[recordIndex].status = 'present';
+            } else {
+                // Add new record
+                attendanceRecordsArray.push({ studentId, subject, status: 'present' });
+            }
+
+            // Toggle button classes
+            subjectButton.classList.add('present');
+            subjectButton.classList.remove('absent');
+
+            // Update attendance records display
+            updateAttendanceRecords();
+        }
+
+        // Function to update attendance records display
+        function updateAttendanceRecords() {
+            const recordsMap = attendanceRecordsArray.reduce((acc, record) => {
+                if (!acc[record.studentId]) {
+                    acc[record.studentId] = {};
+                }
+                acc[record.studentId][record.subject] = record.status;
+                return acc;
+            }, {});
+
+            attendanceTableBody.innerHTML = Object.entries(recordsMap).map(([studentId, subjects]) => `
+                <tr>
+                    <td>${studentId}</td>
+                    <td class="${subjects.Java === 'present' ? 'present' : 'absent'}">${subjects.Java || 'absent'}</td>
+                    <td class="${subjects.DSA === 'present' ? 'present' : 'absent'}">${subjects.DSA || 'absent'}</td>
+                    <td class="${subjects.OS === 'present' ? 'present' : 'absent'}">${subjects.OS || 'absent'}</td>
+                    <td class="${subjects.Math === 'present' ? 'present' : 'absent'}">${subjects.Math || 'absent'}</td>
+                    <td class="${subjects.DBMS === 'present' ? 'present' : 'absent'}">${subjects.DBMS || 'absent'}</td>
+                </tr>
+            `).join('');
+        }
+
+        // Initialize student rows
+        generateStudentRows();
+    </script>
 </body>
 </html>
