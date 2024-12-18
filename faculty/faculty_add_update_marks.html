@@ -182,34 +182,38 @@
             const marks = document.getElementById("marks").value;
 
             const existingRows = Array.from(tableBody.getElementsByTagName("tr"));
-            const isDuplicate = existingRows.some(row => 
-                row.children[0].textContent === studentId && 
-                row.children[1].textContent === subject
-            );
+            let isDuplicate = false;
+            let rowToUpdate = null;
 
-            if (isDuplicate) {
-                alert("Duplicate entry not allowed!");
-            } else {
-                if (editRow) {
-                    editRow.children[0].textContent = studentId;
-                    editRow.children[1].textContent = subject;
-                    editRow.children[2].textContent = marks;
-                    editRow = null;
-                } else {
-                    const row = document.createElement("tr");
-                    row.innerHTML = `
-                        <td>${studentId}</td>
-                        <td>${subject}</td>
-                        <td>${marks}</td>
-                        <td class="actions">
-                            <button class="edit-btn" onclick="editRowFunc(this)">Edit</button>
-                            <button class="delete-btn" onclick="deleteRowFunc(this)">Delete</button>
-                        </td>
-                    `;
-                    tableBody.appendChild(row);
+            existingRows.forEach(row => {
+                if (row.children[0].textContent === studentId && row.children[1].textContent === subject) {
+                    isDuplicate = true;
+                    rowToUpdate = row;
                 }
-                form.reset();
+            });
+
+            if (isDuplicate && editRow) {
+                // Update existing entry
+                editRow.children[0].textContent = studentId;
+                editRow.children[1].textContent = subject;
+                editRow.children[2].textContent = marks;
+                editRow = null;  // Reset editRow after update
+            } else {
+                // Add new entry
+                const row = document.createElement("tr");
+                row.innerHTML = `
+                    <td>${studentId}</td>
+                    <td>${subject}</td>
+                    <td>${marks}</td>
+                    <td class="actions">
+                        <button class="edit-btn" onclick="editRowFunc(this)">Edit</button>
+                        <button class="delete-btn" onclick="deleteRowFunc(this)">Delete</button>
+                    </td>
+                `;
+                tableBody.appendChild(row);
             }
+
+            form.reset();
         });
 
         window.editRowFunc = (btn) => {
