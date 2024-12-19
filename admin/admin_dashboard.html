@@ -6,16 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
-    <link rel="stylesheet" href="adminstyles.css">
+    <link rel="shortcut icon" href="./images/logo.png">
+    <link rel="stylesheet" href="adminstyles.css">  
 </head>
 <body>
     <!-- Header Section -->
     <header>
-        <div class="logo" title="Students portal CIT">
-            <img src="cit.jpg" alt="Logo">
+        <div class="logo" title="Admin Portal">
+            <img src="src/admin_logo.jpg" alt="">
             <h2>Admin Bridge</h2>
         </div>
-        <!-- Navigation Menu -->
         <div class="navbar">
             <a href="admin_dashboard.html" class="active">
                 <span class="material-icons-sharp">dashboard</span>
@@ -29,10 +29,25 @@
                 <span class="material-icons-sharp">school</span>
                 <h3>Manage Faculty</h3>
             </a>
+            <a href="view_reports.html">
+                <span class="material-icons-sharp">bar_chart</span>
+                <h3>View Reports</h3>
+            </a>
+            <a href="assign_faculty.html">
+                <span class="material-icons-sharp">assignment</span>
+                <h3>Assign Faculty</h3>
+            </a>
             <a href="../index.html">
                 <span class="material-icons-sharp">logout</span>
                 <h3>Logout</h3>
             </a>
+        </div>
+        <div id="profile-btn">
+            <span class="material-icons-sharp">admin_panel_settings</span>
+        </div>
+        <div class="theme-toggler">
+            <span class="material-icons-sharp active">light_mode</span>
+            <span class="material-icons-sharp">dark_mode</span>
         </div>
     </header>
 
@@ -43,7 +58,7 @@
             <div class="profile">
                 <div class="top">
                     <div class="profile-photo">
-                        <img src="profile-admin.jpg" alt="Admin Profile">
+                        <img src="./images/profile-admin.jpg" alt="">
                     </div>
                     <div class="info">
                         <p>Hey, <b>Admin</b></p>
@@ -59,31 +74,6 @@
                     <p>123 Admin Street, City</p>
                 </div>
             </div>
-<<<<<<< HEAD
-        </aside>
-
-        <!-- Dashboard Main Content -->
-        <main>
-            <div class="announcements-section">
-                <h2>Manage Announcements</h2>
-                
-                <!-- Flex container for form and announcement list -->
-                <div class="announcements-container">
-                    <!-- Announcement Form -->
-                    <form id="announcement-form">
-                        <label for="announcement-text">New Announcement:</label>
-                        <textarea id="announcement-text" rows="4" placeholder="Enter announcement here..." required></textarea>
-                        <button type="submit">Post Announcement</button>
-                    </form>
-
-                    <!-- Announcements Display -->
-                    <div class="announcement-list" id="announcement-list">
-                        <!-- Announcements will be dynamically populated here -->
-                    </div>
-                </div>
-            </div>
-        </main>
-=======
         </aside>        
         <!-- Right Section -->
         <div class="right">
@@ -105,10 +95,9 @@
                 </div>
             </div>
         </div>
->>>>>>> 58beefbebabddea10d5b8bb63b482dd9e1c6005b
     </div>
 
-    <!-- Script -->
-    <script src="manage_announcements.js"></script>
+    <!-- Scripts -->
+    <script src="app.js"></script>
 </body>
 </html>

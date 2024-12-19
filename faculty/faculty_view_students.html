@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>View Department Students</title>
     <link rel="shortcut icon" href="src/cit.png" type="image/png">
-    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -13,69 +13,163 @@
             margin: 0;
             padding: 0;
         }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background-color: #ffffff;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+
+        .logo h2 {
+            font-size: 20px;
+            color: #333333;
+            font-weight: bold;
+        }
+
+        .navbar {
+            display: flex;
+            gap: 20px;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            font-size: 14px;
+            color: #333333;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .navbar a.active {
+            color: #4CAF50;
+        }
+
+        .navbar a:hover {
+            color: #4CAF50;
+        }
+
+        .theme-toggler {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .theme-toggler span {
+            cursor: pointer;
+            font-size: 18px;
+        }
+
         .container {
             width: 80%;
-            max-width: 800px;
+            max-width: 1200px;
             margin: 20px auto;
             padding: 20px;
             background-color: #ffffff;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
+
         h1 {
             text-align: center;
             color: #333333;
         }
+
         .search-bar {
             display: flex;
             gap: 10px;
             margin-bottom: 20px;
         }
-        input[type="text"] {
-            padding: 10px;
-            font-size: 14px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            width: calc(100% - 100px);
-        }
-        select {
+
+        input[type="text"], select {
             padding: 10px;
             font-size: 14px;
             border: 1px solid #ddd;
             border-radius: 4px;
         }
+
         table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 20px;
+            margin: 20px auto;
         }
+
         th, td {
             padding: 12px;
             border: 1px solid #ddd;
-            text-align: left;
+            text-align: center;
         }
+
         th {
             background-color: #4CAF50;
             color: #ffffff;
         }
+
         tr:nth-child(even) {
             background-color: #f2f2f2;
         }
     </style>
 </head>
 <body>
+    <header>
+        <div class="logo" title="Students Portal CIT">
+            <img src="src/cit.png" alt="CIT Logo">
+            <h2>Faculty Bridge</h2>
+        </div>
+        <nav class="navbar">
+            <a href="faculty.html" class="active">
+                <span class="material-icons-sharp">home</span> Home
+            </a>
+            <a href="faculty_post_announcements.html">
+                <span class="material-icons-sharp">announcement</span> Post Announcements
+            </a>
+            <a href="faculty_add_update_marks.html">
+                <span class="material-icons-sharp">assessment</span> Add/Update Marks
+            </a>
+            <a href="faculty_marksattendance.html">
+                <span class="material-icons-sharp">check_circle</span> Marks & Attendance
+            </a>
+            <a href="faculty_view_students.html">
+                <span class="material-icons-sharp">grid_view</span> View Students
+            </a>
+            <a href="timetable.html">
+                <span class="material-icons-sharp">today</span> Time Table
+            </a>
+            <a href="../index.html">
+                <span class="material-icons-sharp">logout</span> Logout
+            </a>
+        </nav>
+        <div class="theme-toggler">
+            <span class="material-icons-sharp active">light_mode</span>
+            <span class="material-icons-sharp">dark_mode</span>
+        </div>
+    </header>
     <div class="container">
         <h1>View Department Students</h1>
         <div class="search-bar">
             <input type="text" id="search-name" placeholder="Search by Name" onkeyup="filterStudents()">
             <select id="filter-department" onchange="filterStudents()">
                 <option value="">Filter by Department</option>
-                <option value="math">Math</option>
-                <option value="java">Java</option>
-                <option value="python">Python</option>
-                <option value="dsa">DSA</option>
-                <option value="dbms">DBMS</option>
-                <option value="os">OS</option>
-                <!-- Add more departments as needed -->
+                <option value="Math">Math</option>
+                <option value="Java">Java</option>
+                <option value="Python">Python</option>
+                <option value="DSA">DSA</option>
+                <option value="DBMS">DBMS</option>
+                <option value="OS">OS</option>
             </select>
         </div>
         <table id="students-table">
@@ -89,7 +183,6 @@
                 </tr>
             </thead>
             <tbody>
-                <!-- Example data -->
                 <tr>
                     <td>001</td>
                     <td>John Doe</td>
@@ -132,7 +225,6 @@
                     <td>1st Year</td>
                     <td><a href="faculty_view_student_details.html">View Details</a></td>
                 </tr>
-                <!-- More student rows as needed -->
             </tbody>
         </table>
     </div>
