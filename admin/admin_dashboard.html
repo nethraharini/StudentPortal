@@ -6,22 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
-    <link rel="shortcut icon" href="./images/logo.png">
-    <link rel="stylesheet" href="adminstyles.css">  
+    <link rel="stylesheet" href="adminstyles.css">
+    <link rel="shortcut icon" href="src/cit.jpg" type="image/png">
 </head>
 <body>
     <!-- Header Section -->
     <header>
-        <div class="logo" title="Admin Portal">
-            <img src="src/admin_logo.jpg" alt="">
+        <div class="logo" title="Students portal CIT">
+            <img src="src/cit.jpg" alt="Logo">
             <h2>Admin Bridge</h2>
         </div>
+        <!-- Navigation Menu -->
         <div class="navbar">
             <a href="admin_dashboard.html" class="active">
                 <span class="material-icons-sharp">dashboard</span>
                 <h3>Dashboard</h3>
             </a>
-            <a href="manage_students.html">
+            <a href="manage_students.html" >
                 <span class="material-icons-sharp">person</span>
                 <h3>Manage Students</h3>
             </a>
@@ -29,25 +30,10 @@
                 <span class="material-icons-sharp">school</span>
                 <h3>Manage Faculty</h3>
             </a>
-            <a href="view_reports.html">
-                <span class="material-icons-sharp">bar_chart</span>
-                <h3>View Reports</h3>
-            </a>
-            <a href="assign_faculty.html">
-                <span class="material-icons-sharp">assignment</span>
-                <h3>Assign Faculty</h3>
-            </a>
             <a href="../index.html">
                 <span class="material-icons-sharp">logout</span>
                 <h3>Logout</h3>
             </a>
-        </div>
-        <div id="profile-btn">
-            <span class="material-icons-sharp">admin_panel_settings</span>
-        </div>
-        <div class="theme-toggler">
-            <span class="material-icons-sharp active">light_mode</span>
-            <span class="material-icons-sharp">dark_mode</span>
         </div>
     </header>
 
@@ -58,7 +44,7 @@
             <div class="profile">
                 <div class="top">
                     <div class="profile-photo">
-                        <img src="./images/profile-admin.jpg" alt="">
+                        <img src="profile-admin.jpg" alt="Admin Profile">
                     </div>
                     <div class="info">
                         <p>Hey, <b>Admin</b></p>
@@ -74,30 +60,37 @@
                     <p>123 Admin Street, City</p>
                 </div>
             </div>
-        </aside>        
-        <!-- Right Section -->
-        <div class="right">
-            <div class="announcements">
-                <h2>Announcements</h2>
-                <div class="updates">
-                    <div class="message">
-                        <p><b>Reminder:</b> Faculty meeting at 3 PM.</p>
-                        <small class="text-muted">2 Hours Ago</small>
+        </aside>
+
+        <!-- Dashboard Main Content -->
+         
+        
+        <main>
+            <div class="container">
+                    <div class="recent-announcements">
+                        <h2>Recent Announcements</h2>
+                        <div id="announcement-list">
+                            <!-- Predefined Announcements -->
+                            <div class="announcement">
+                                <p><b>Announcement:</b> Mid-term exams will start on 21/12/2024. Prepare accordingly.</p>
+                                <small class="text-muted">Posted on: 15/12/2024</small>
+                                <div class="comments-section">
+                                    <h2>Comments:</h2>
+                                    <div class="comments" data-id="1">
+                                        <p>Hii</p>
+                                    </div>
+    
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="message">
-                        <p><b>Update:</b> New course material available for review.</p>
-                        <small class="text-muted">Yesterday</small>
-                    </div>
-                    <div class="message">
-                        <p><b>Notice:</b> Semester schedule has been updated.</p>
-                        <small class="text-muted">Last Week</small>
-                    </div>
-                </div>
             </div>
-        </div>
+
+
+        </main>
     </div>
 
-    <!-- Scripts -->
-    <script src="app.js"></script>
+    <!-- Script -->
+    <script src="manage_announcements.js"></script>
 </body>
 </html>

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Faculty</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+    <link rel="stylesheet" href="adminstyles.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f4f4f4;
+        }
+
+        .admin-action-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 50px;
+            padding: 50px;
+            height: calc(100vh - 150px); /* Adjust height to center within viewport */
+        }
+
+        .admin-card {
+            width: 200px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #f9f9f9;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .admin-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .admin-card h3 {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        .admin-card button {
+            padding: 10px 15px;
+            font-size: 14px;
+            cursor: pointer;
+            border: none;
+            background-color: #e6e6e6;
+            color: white;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .admin-card button:hover {
+            background-color: #eff2f5;
+        }
+
+        header {
+            width: 100%;
+            padding: 10px 20px;
+            background-color: #f0f3f7;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: white;
+            margin: 0 10px;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .navbar a.active {
+            font-weight: bold;
+        }
+
+        .navbar a span {
+            margin-right: 5px;
+        }
+
+        .update-faculty-form {
+            width: 100%;
+            max-width: 600px;
+            margin: 100px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .update-faculty-form form {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .update-faculty-form label {
+            font-weight: bold;
+        }
+
+        .update-faculty-form input {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .update-faculty-form button {
+            grid-column: span 2;
+            padding: 10px;
+            font-size: 16px;
+            background-color: #59c553;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .update-faculty-form button:hover {
+            background-color: #e9edf2;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo" title="Faculty portal CIT">
+            <img src="cit.jpg" alt="Logo">
+            <h2>Admin Bridge</h2>
+        </div>
+        <div class="navbar">
+            <a href="admin_dashboard.html">
+                <span class="material-icons-sharp">dashboard</span>
+                <h3>Dashboard</h3>
+            </a>
+            <a href="manage_students.html">
+                <span class="material-icons-sharp">person</span>
+                <h3>Manage Students</h3>
+            </a>
+            <a href="manage_faculty.html" class="active">
+                <span class="material-icons-sharp">school</span>
+                <h3>Manage Faculty</h3>
+            </a>
+            <a href="../index.html">
+                <span class="material-icons-sharp">logout</span>
+                <h3>Logout</h3>
+            </a>
+        </div>
+    </header>
+
+    <div class="update-faculty-form">
+        <h2>Update Faculty Details</h2>
+        <form id="update-faculty-form">
+            <label for="faculty-id">Faculty ID:</label>
+            <input type="text" id="faculty-id" placeholder="Enter Faculty ID" required>
+            
+            <label for="faculty-name">Name:</label>
+            <input type="text" id="faculty-name" placeholder="Enter Updated Name">
+            
+            <label for="faculty-email">Email:</label>
+            <input type="email" id="faculty-email" placeholder="Enter Updated Email">
+            
+            <label for="faculty-phone">Phone:</label>
+            <input type="tel" id="faculty-phone" placeholder="Enter Updated Phone">
+            
+            <label for="faculty-address">Address:</label>
+            <input type="text" id="faculty-address" placeholder="Enter Updated Address">
+
+            <button type="submit">Update Faculty</button>
+        </form>
+    </div>
+
+    <script>
+        const updateForm = document.getElementById("update-faculty-form");
+
+        updateForm.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            // Gather input data
+            const facultyId = document.getElementById("faculty-id").value;
+            const facultyName = document.getElementById("faculty-name").value;
+            const facultyEmail = document.getElementById("faculty-email").value;
+            const facultyPhone = document.getElementById("faculty-phone").value;
+            const facultyAddress = document.getElementById("faculty-address").value;
+
+            // Simulated update logic (replace this with actual backend communication)
+            console.log("Updated Details:", {
+                facultyId,
+                facultyName,
+                facultyEmail,
+                facultyPhone,
+                facultyAddress,
+            });
+
+            alert("Faculty details updated successfully!");
+            updateForm.reset();
+        });
+    </script>
+</body>
+</html>

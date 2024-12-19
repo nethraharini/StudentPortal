@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Student</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+    <link rel="stylesheet" href="adminstyles.css">
+    <link rel="shortcut icon" href="src/cit.jpg" type="image/png">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f3f3;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: #f8f8f9;
+            color: #fff;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .navbar {
+            display: flex;
+        }
+
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar a span {
+            margin-right: 5px;
+        }
+
+        .navbar a.active {
+            font-weight: bold;
+        }
+
+        .delete-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            width: 400px;
+            margin: auto;
+            margin-top: 200px;
+        }
+
+        .delete-container h1 {
+            margin-bottom: 20px;
+            font-size: 1.5em;
+            color: #333;
+            text-align: center;
+        }
+
+        .delete-container input, .delete-container button {
+            margin: 10px 0;
+            padding: 10px;
+            width: calc(100% - 20px);
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .delete-container button {
+            background-color: #2fd34d;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            font-size: 1em;
+        }
+
+        .delete-container button:hover {
+            background-color: #4fe559;
+        }
+
+        .delete-container #backButton {
+            background-color: #42cc38;
+        }
+
+        .delete-container #backButton:hover {
+            background-color: #29c240;
+        }
+
+        .delete-container #statusMessage {
+            margin-top: 10px;
+            color: rgb(59, 204, 46);
+            font-size: 0.9em;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="logo" title="Students portal CIT">
+            <img src="src/cit.jpg" alt="Logo">
+            <h2>Admin Bridge</h2>
+        </div>
+        <!-- Navigation Menu -->
+        <div class="navbar">
+            <a href="admin_dashboard.html">
+                <span class="material-icons-sharp">dashboard</span>
+                <h3>Dashboard</h3>
+            </a>
+            <a href="manage_students.html" class="active">
+                <span class="material-icons-sharp">person</span>
+                <h3>Manage Students</h3>
+            </a>
+            <a href="manage_faculty.html">
+                <span class="material-icons-sharp">school</span>
+                <h3>Manage Faculty</h3>
+            </a>
+            <a href="../index.html">
+                <span class="material-icons-sharp">logout</span>
+                <h3>Logout</h3>
+            </a>
+        </div>
+    </header>
+
+    <div class="delete-container">
+        <h1>Delete Student</h1>
+        <form id="deleteForm">
+            <input type="text" id="studentId" placeholder="Enter Student ID" required />
+            <button type="button" onclick="deleteStudent()">Delete Student</button>
+            <button type="button" id="backButton" onclick="goBack()">Back</button>
+        </form>
+        <p id="statusMessage"></p>
+    </div>
+
+    <script>
+        function deleteStudent() {
+            const studentId = document.getElementById("studentId").value.trim();
+
+            if (studentId) {
+                document.getElementById("statusMessage").innerText =
+                    `Student with ID: ${studentId} has been deleted successfully.`;
+                document.getElementById("statusMessage").style.color = "green";
+                console.log(`Deleted: Student ID=${studentId}`);
+            } else {
+                document.getElementById("statusMessage").innerText = "Please enter a valid Student ID!";
+                document.getElementById("statusMessage").style.color = "red";
+            }
+        }
+
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>
