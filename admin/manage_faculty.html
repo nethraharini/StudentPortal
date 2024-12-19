@@ -6,15 +6,96 @@
     <title>Manage Faculty</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
     <link rel="stylesheet" href="adminstyles.css">
+    <link rel="shortcut icon" href="src/cit.jpg" type="image/png">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f4f4f4;
+        }
+
+        .admin-action-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            padding: 20px;
+            height: calc(100vh - 150px); /* Adjust height to center within viewport */
+        }
+
+        .admin-card {
+            width: 200px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #f9f9f9;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .admin-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .admin-card h3 {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        .admin-card button {
+            padding: 10px 15px;
+            font-size: 14px;
+            cursor: pointer;
+            border: none;
+            background-color: #2cac3f;
+            color: white;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .admin-card button:hover {
+            background-color: #7ec484;
+        }
+
+        header {
+            width: 100%;
+            padding: 10px 20px;
+            background-color: #f5f8fb;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: white;
+            margin-top: 0 10px;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .navbar a.active {
+            font-weight: bold;
+        }
+
+        .navbar a span {
+            margin-right: 5px;
+        }
+    </style>
 </head>
 <body>
-    <!-- Header Section -->
     <header>
-        <div class="logo" title="Admin Portal CIT">
-            <img src="cit.jpg" alt="CIT Logo">
+        <div class="logo" title="Students portal CIT">
+            <img src="src/cit.jpg" alt="Logo">
             <h2>Admin Bridge</h2>
         </div>
-        <!-- Navigation Menu -->
         <div class="navbar">
             <a href="admin_dashboard.html">
                 <span class="material-icons-sharp">dashboard</span>
@@ -34,72 +115,19 @@
             </a>
         </div>
     </header>
-
-    <!-- Main Container -->
-    <div class="container">
-        <!-- Sidebar Section -->
-        <aside>
-            <div class="profile">
-                <div class="top">
-                    <div class="profile-photo">
-                        <img src="profile-admin.jpg" alt="Admin Profile">
-                    </div>
-                    <div class="info">
-                        <p>Hey, <b>Admin</b></p>
-                        <small class="text-muted">ID: 1001</small>
-                    </div>
-                </div>
-                <div class="about">
-                    <h5>Email</h5>
-                    <p>admin@organization.com</p>
-                    <h5>Contact</h5>
-                    <p>+1 123-456-7890</p>
-                    <h5>Address</h5>
-                    <p>123 Admin Street, City</p>
-                </div>
-            </div>
-        </aside>
-
-        <!-- Main Section -->
-        <main>
-            <div class="manage-faculty-section">
-                <h2>Manage Faculty</h2>
-                <!-- Form Container -->
-                <form id="faculty-form" class="faculty-form">
-                    <label for="faculty-name">Name:</label>
-                    <input type="text" id="faculty-name" placeholder="Enter Faculty Name" required>
-
-                    <label for="faculty-department">Department:</label>
-                    <input type="text" id="faculty-department" placeholder="Enter Department" required>
-
-                    <label for="faculty-email">Email:</label>
-                    <input type="email" id="faculty-email" placeholder="Enter Faculty Email" required>
-
-                    <button type="submit">Add Faculty</button>
-                </form>
-
-                <!-- Table Container -->
-                <div class="table-container">
-                    <table id="faculty-table">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Name</th>
-                                <th>Department</th>
-                                <th>Email</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody id="faculty-list">
-                            <!-- Faculty rows will be dynamically populated here -->
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </main>
+    <div class="admin-action-container">
+        <button onclick="window.location.href='addfaculty.html'">
+            <div class="admin-card">
+            <h3>Add Faculty</h3>
+            </div></button>
+            <button onclick="window.location.href='updatefaculty.html'"><div class="admin-card">
+            <h3>Update Faculty</h3>
+            </div></button>
+        
+            <button onclick="window.location.href='deletefaculty.html'"><div class="admin-card">
+            <h3>Delete Faculty</h3>
+            </div></button>
+        
     </div>
-
-    <!-- Script -->
-    <script src="manage_faculty.js"></script>
 </body>
 </html>
