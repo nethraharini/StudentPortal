@@ -12,7 +12,7 @@ This is Collaborative projects for our Student-Portal
 
 
 **ADMIN FLOW**
-├── Admin → Admin Dashboard  
+├── Admin → Admin Dashboard ->Announcement
 │     ├── Manage Students  
 │     │     ├── Add  
 │     │     ├── Update  
