@@ -205,6 +205,28 @@ aside .profile .about{
     margin-top: 1rem;
 }
 
+#announcementText {
+    font-size: 1.2em; /* Change the font size to make the text larger */
+    resize: none; /* Prevent the textarea from being resizable */
+    padding: 10px; /* Add some padding for a better user experience */
+    width: 100%; /* Make the textarea take the full width of its parent */
+    height: 100px; /* Set an initial height */
+}
+.post-announcement-btn {
+    font-size: 1.2em; /* Increase the font size */
+    padding: 12px 20px; /* Increase padding for better appearance */
+    border-radius: 5px; /* Add rounded corners */
+    background-color: #007bff; /* Use a primary color for background */
+    color: white; /* Text color */
+    border: none; /* Remove the border */
+    cursor: pointer; /* Add pointer cursor */
+    transition: background-color 0.3s; /* Smooth transition on hover */
+}
+
+.post-announcement-btn:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}
+
 
 /* Home Section  */
 main{

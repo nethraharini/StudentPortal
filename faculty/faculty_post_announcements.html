@@ -83,36 +83,7 @@
                 </div>
             </div>
         </aside>
-
-        <!-- Main Section -->
-        <main>
-            <div class="post-announcement">
-                <h2>Post Announcements</h2>
-                <form id="announcementForm">
-                    <textarea id="announcementText" placeholder="Type your announcement here..." required></textarea>
-                    <button type="submit">Post Announcement</button>
-                </form>
-
-                <div class="recent-announcements">
-                    <h2>Recent Announcements</h2>
-                    <div id="announcement-list">
-                        <!-- Dynamic announcements will be appended here -->
-                    </div>
-
-                    <div class="comment-section">
-                        <h3>Comments</h3>
-                        <div id="comments-list">
-                            <!-- Comments will be displayed here -->
-                        </div>
-                        <form id="commentForm">
-                            <textarea id="commentText" placeholder="Add a comment..." required></textarea>
-                            <button type="submit">Post Comment</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </main>
-
+    
         <!-- Right Section -->
         <div class="right">
             <div class="announcements">
@@ -120,18 +91,30 @@
                 <div class="updates" id="faculty-updates">
                     <!-- Announcements from faculty -->
                 </div>
+
+                <!-- Form to add announcements -->
+                <form id="announcementForm">
+                    <textarea id="announcementText" placeholder="Type your announcement here..." required></textarea>
+                    <button type="submit" class="post-announcement-btn">Post Announcement</button>
+                </form>
             </div>
-            <div class="upcoming_exams">
-                <h2>Upcoming Exams</h2>
-                <div class="exam">
-                    <p>Data Structures - 21/12/2024</p>
+        </div>
+        <div class="comments">
+            <h2>View Comments</h2>
+            <div id="comments-section">
+                <div class="comment">
+                     <p>ok</p>
+                    <small class="text-muted">12/18/2024, 10:30 AM</small>
                 </div>
-                <div class="exam">
-                    <p>Machine Learning - 23/12/2024</p>
+                <div class="comment">
+                    <p> Can we get some more details on the timing for the semester start?</p>
+                    <small class="text-muted">12/18/2024, 11:00 AM</small>
                 </div>
-                <div class="exam">
-                    <p>Operating Systems - 25/12/2024</p>
+                <div class="comment">
+                    <p>Excited for the new semester. Any updates on the syllabus?</p>
+                    <small class="text-muted">12/18/2024, 11:30 AM</small>
                 </div>
+                <!-- Comments will be displayed here -->
             </div>
         </div>
     </div>
@@ -170,60 +153,26 @@
 
         // Function to display announcements
         function displayAnnouncements() {
-            const announcementList = document.getElementById('announcement-list');
             const facultyUpdates = document.getElementById('faculty-updates');
 
             // Clear existing content
-            announcementList.innerHTML = '';
             facultyUpdates.innerHTML = '';
 
-            // Append each announcement to both the main list and faculty updates
+            // Append each announcement to the faculty updates
             announcements.forEach(announcement => {
                 const announcementElement = `
-                    <div class="message">
-                        <p><b>Announcement</b>: ${announcement.text}</p>
-                        <small class="text-muted">${announcement.timestamp}</small>
-                    </div>
-                `;
-
-                const facultyAnnouncementElement = `
                     <div class="message">
                         <p><b>Faculty Announcement</b>: ${announcement.text}</p>
                         <small class="text-muted">${announcement.timestamp}</small>
                     </div>
                 `;
 
-                announcementList.innerHTML += announcementElement;
-                facultyUpdates.innerHTML += facultyAnnouncementElement;
+                facultyUpdates.innerHTML += announcementElement;
             });
         }
 
         // Initial display of announcements
         displayAnnouncements();
-
-        // JavaScript to handle posting of comments
-        document.getElementById('commentForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-
-            const commentText = document.getElementById('commentText').value;
-            if (commentText.trim() === '') {
-                return alert('Please type a comment.');
-            }
-
-            // Create a new comment element
-            const newComment = document.createElement('div');
-            newComment.classList.add('comment');
-            newComment.innerHTML = `
-                <p>${commentText}</p>
-                <small class="text-muted">Just Now</small>
-            `;
-
-            // Append the new comment to the comments list
-            document.getElementById('comments-list').prepend(newComment);
-
-            // Clear the comment text area
-            document.getElementById('commentText').value = '';
-        });
     </script>
 </body>
 </html>
