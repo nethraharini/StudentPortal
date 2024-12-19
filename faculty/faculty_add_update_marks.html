@@ -8,7 +8,9 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <!-- Favicon -->
-    <link rel="icon" href="src/cit.png" type="image/png">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+    <link rel="shortcut icon" href="src/cit.jpg" type="image/png">
+
     <style>
         /* General Styles */
         body {
@@ -50,6 +52,7 @@
         .marks-container {
             max-width: 600px;
             margin: auto;
+            margin-top:60px;
         }
         .form-group {
             margin-bottom: 15px;
@@ -78,7 +81,7 @@
         table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 20px;
+            margin-top: 50px;
         }
         table th, table td {
             border: 1px solid #ddd;
@@ -111,21 +114,49 @@
 <body>
     <!-- Header Section -->
     <header>
-        <div class="logo">
-            <img src="src/cit.png" alt="CIT Logo" style="width: 40px; height: 40px;">
-            <h2>Faculty Bridge</h2>
-        </div>
-        <div class="navbar">
-            <a href="faculty.html" class="active">Home</a>
-            <a href="faculty_post_announcements.html">Post Announcements</a>
-            <a href="faculty_add_update_marks.html">Add/Update Marks</a>
-            <a href="faculty_marksattendance.html">Marks & Attendance</a>
-            <a href="faculty_view_students.html">View Students</a>
-            <a href="timetable.html">Time Table</a>
-            <a href="../index.html">Logout</a>
-        </div>
-        <button id="theme-toggle" style="background: none; border: none; color: black; cursor: pointer;">Switch to Dark Mode</button>
-    </header>
+        <link rel="stylesheet" href="facultystyles.css">
+            <div class="logo" title="Students portal CIT">
+                <img src="src/cit.png" alt="CIT Logo" style="width: 50px; height: 50px;">
+                <h2>Faculty Bridge</h2>
+            </div>
+            <div class="navbar">
+                <a href="faculty.html" class="active">
+                    <span class="material-icons-sharp">home</span>
+                    <h3>Home</h3>
+                </a>
+                <a href="faculty_post_announcements.html">
+                    <span class="material-icons-sharp">announcement</span>
+                    <h3>Post Announcements</h3>
+                </a>
+                <a href="faculty_add_update_marks.html">
+                    <span class="material-icons-sharp">assessment</span>
+                    <h3>Add/Update Marks</h3>
+                </a>
+                <a href="faculty_marksattendance.html">
+                    <span class="material-icons-sharp">check_circle</span>
+                    <h3>Marks & Attendance</h3>
+                </a>
+                <a href="faculty_view_students.html">
+                    <span class="material-icons-sharp">grid_view</span>
+                    <h3>View Students</h3>
+                </a>
+                <a href="timetable.html">
+                    <span class="material-icons-sharp">today</span>
+                    <h3>Time Table</h3>
+                </a>
+                <a href="../index.html">
+                    <span class="material-icons-sharp">logout</span>
+                    <h3>Logout</h3>
+                </a>
+            </div>
+            <div id="profile-btn">
+                <span class="material-icons-sharp">person</span>
+            </div>
+            <div class="theme-toggler">
+                <span class="material-icons-sharp active">light_mode</span>
+                <span class="material-icons-sharp">dark_mode</span>
+            </div>
+        </header>
 
     <!-- Content Section -->
     <div class="content">

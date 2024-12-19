@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Marks & Attendance</title>
+    <title>Attendance Swapping</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
     <style>
         :root {
-            --bg-color: white;
-            --text-color: black;
-            --header-bg: white;
-            --header-text: black;
-            --button-bg: lightgray;
-            --button-text: black;
+            --bg-color: #f4f4f9;
+            --text-color: #333;
+            --button-default: white;
+            --button-present: green;
+            --button-absent: red;
         }
 
         body {
@@ -25,51 +25,42 @@
 
         header {
             display: flex;
+            align-items: center;
             justify-content: space-between;
-            align-items: center;
+            background: #ffffff;
             padding: 10px 20px;
-            background-color: var(--header-bg);
-            color: var(--header-text);
-            border-bottom: 1px solid #ccc;
+            border-bottom: 1px solid #ddd;
         }
 
-        header .logo {
-            display: flex;
-            align-items: center;
-        }
-
-        header .logo img {
+        .logo img {
+            width: 50px;
+            height: 50px;
             margin-right: 10px;
         }
 
-        header .navbar a {
-            margin: 0 10px;
-            text-decoration: none;
+        .navbar {
+            display: flex;
+            gap: 15px;
+        }
+
+        .navbar a {
+            display: flex;
+            align-items: center;
+            gap: 5px;
             color: var(--text-color);
-            font-weight: 500;
+            text-decoration: none;
         }
 
-        header .navbar a.active {
-            text-decoration: underline;
-        }
-
-        button {
-            padding: 10px 15px;
-            background-color: var(--button-bg);
-            color: var(--button-text);
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            opacity: 0.9;
+        .navbar a.active, .navbar a:hover {
+            color: green;
+            font-weight: 600;
         }
 
         .container {
             padding: 20px;
-            max-width: 800px;
+            max-width: 900px;
             margin: auto;
+            margin-top:60px;
         }
 
         .student-row {
@@ -78,108 +69,110 @@
             justify-content: space-between;
             padding: 10px;
             border: 1px solid #ddd;
-            margin-bottom: 5px;
+            border-radius: 5px;
+            background: #fff;
+            margin-bottom: 10px;
         }
 
         .student-row span {
-            flex-grow: 1;
+            flex: 1;
             text-align: center;
         }
 
-        .subject-buttons {
-            display: flex;
-            gap: 10px;
-        }
-
         .subject-buttons button {
-            padding: 5px 10px;
-            border: 1px solid transparent;
-            transition: all 0.3s ease;
+            padding: 8px;
+            border: 1px solid #333;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
         }
 
         .subject-buttons button.present {
-            background-color: green;
+            background-color: var(--button-present);
             color: white;
         }
 
         .subject-buttons button.absent {
-            background-color: red;
+            background-color: var(--button-absent);
             color: white;
-        }
-
-        .attendance-record {
-            padding: 10px;
-            border-top: 1px solid #ddd;
-            margin-top: 10px;
-            font-size: 14px;
-            color: #555;
-        }
-
-        .attendance-record span {
-            display: block;
-        }
-
-        .dark-mode {
-            --bg-color: black;
-            --text-color: white;
-            --header-bg: #333;
-            --header-text: white;
-            --button-bg: gray;
-            --button-text: white;
         }
 
         .attendance-table {
             margin-top: 20px;
             width: 100%;
             border-collapse: collapse;
+            background: white;
+            border-radius: 5px;
+            overflow: hidden;
         }
 
         .attendance-table th, .attendance-table td {
             border: 1px solid #ddd;
-            padding: 8px;
+            padding: 10px;
             text-align: center;
         }
 
         .attendance-table th {
-            background-color: #f4f4f4;
+            background-color: #f9fafb;
         }
 
         .attendance-table .present {
-            background-color: green;
+            background-color: var(--button-present);
             color: white;
         }
 
         .attendance-table .absent {
-            background-color: red;
+            background-color: var(--button-absent);
             color: white;
         }
     </style>
 </head>
 <body>
     <header>
+        <link rel="stylesheet" href="facultystyles.css">
         <div class="logo">
-            <img src="src/cit.png" alt="CIT Logo" style="width: 40px; height: 40px;">
+            <img src="src/cit.png" alt="CIT Logo">
             <h2>Faculty Bridge</h2>
         </div>
-        <div class="navbar">
-            <a href="faculty.html" class="active">Home</a>
-            <a href="faculty_post_announcements.html">Post Announcements</a>
-            <a href="faculty_add_update_marks.html">Add/Update Marks</a>
-            <a href="faculty_marksattendance.html">Marks & Attendance</a>
-            <a href="faculty_view_students.html">View Students</a>
-            <a href="timetable.html">Time Table</a>
-            <a href="../index.html">Logout</a>
-        </div>
-        <button id="theme-toggle">Switch to Dark Mode</button>
+        <nav class="navbar">
+            <a href="faculty.html" class="active">
+                <span class="material-icons-sharp">home</span>
+                Home
+            </a>
+            <a href="faculty_post_announcements.html">
+                <span class="material-icons-sharp">announcement</span>
+                Announcements
+            </a>
+            <a href="faculty_add_update_marks.html">
+                <span class="material-icons-sharp">assessment</span>
+                Marks
+            </a>
+            <a href="faculty_marksattendance.html">
+                <span class="material-icons-sharp">check_circle</span>
+                Mark & Attendance
+            </a>
+            <a href="faculty_view_students.html">
+                <span class="material-icons-sharp">grid_view</span>
+                Students
+            </a>
+            <a href="timetable.html">
+                <span class="material-icons-sharp">today</span>
+                Timetable
+            </a>
+            <a href="../index.html">
+                <span class="material-icons-sharp">logout</span>
+                Logout
+            </a>
+        </nav>
     </header>
 
     <div class="container">
-        <h2>Dynamic Attendance Management</h2>
+        <h2>Attendance Management</h2>
         <div id="attendance-container">
-            <!-- Student rows will be generated dynamically -->
+            <!-- Dynamic Student Rows -->
         </div>
-        <div id="attendance-records">
-            <!-- Attendance records will be displayed here -->
+        <div>
+            <h3>Attendance Table</h3>
             <table class="attendance-table">
                 <thead>
                     <tr>
@@ -192,73 +185,63 @@
                     </tr>
                 </thead>
                 <tbody id="attendance-table-body">
-                    <!-- Attendance records rows will be dynamically added here -->
+                    <!-- Attendance Rows -->
                 </tbody>
             </table>
         </div>
     </div>
 
     <script>
-        const themeToggle = document.getElementById("theme-toggle");
-
-        themeToggle.addEventListener("click", () => {
-            document.body.classList.toggle("dark-mode");
-            themeToggle.textContent = document.body.classList.contains("dark-mode")
-                ? "Switch to Light Mode"
-                : "Switch to Dark Mode";
-        });
-
         const attendanceContainer = document.getElementById('attendance-container');
         const attendanceTableBody = document.getElementById('attendance-table-body');
 
-        // Array to store attendance records
+        const STATES = ["default", "present", "absent"];
         let attendanceRecordsArray = [];
 
-        // Function to generate student rows
         function generateStudentRows() {
             const students = Array.from({ length: 10 }, (_, index) => ({
-                id: `24037176622${index + 1}`,
-                name: `Student ${index + 1}`
+                id: `0${index + 1}`,
+                name: `0 ${index + 1}`
             }));
 
             attendanceContainer.innerHTML = students.map(student => `
                 <div class="student-row">
                     <span>${student.name}</span>
                     <div class="subject-buttons" data-student-id="${student.id}">
-                        <button onclick="markAttendance('${student.id}', 'Java')">Java</button>
-                        <button onclick="markAttendance('${student.id}', 'DSA')">DSA</button>
-                        <button onclick="markAttendance('${student.id}', 'OS')">OS</button>
-                        <button onclick="markAttendance('${student.id}', 'Math')">Math</button>
-                        <button onclick="markAttendance('${student.id}', 'DBMS')">DBMS</button>
+                        <button onclick="toggleAttendance(this, '${student.id}', 'Java')">Java</button>
+                        <button onclick="toggleAttendance(this, '${student.id}', 'DSA')">DSA</button>
+                        <button onclick="toggleAttendance(this, '${student.id}', 'OS')">OS</button>
+                        <button onclick="toggleAttendance(this, '${student.id}', 'Math')">Math</button>
+                        <button onclick="toggleAttendance(this, '${student.id}', 'DBMS')">DBMS</button>
                     </div>
                 </div>
             `).join('');
         }
 
-        // Function to mark attendance
-        function markAttendance(studentId, subject) {
-            const studentRow = document.querySelector(`.subject-buttons[data-student-id="${studentId}"]`);
-            const subjectButton = studentRow.querySelector(`button[onclick*="${subject}"]`);
-            const recordIndex = attendanceRecordsArray.findIndex(record => record.studentId === studentId && record.subject === subject);
+        function toggleAttendance(button, studentId, subject) {
+            const currentState = STATES.find(state => button.classList.contains(state)) || "default";
+            const nextState = STATES[(STATES.indexOf(currentState) + 1) % STATES.length];
 
-            if (recordIndex !== -1) {
-                // Update existing record
-                attendanceRecordsArray[recordIndex].status = 'present';
-            } else {
-                // Add new record
-                attendanceRecordsArray.push({ studentId, subject, status: 'present' });
+            button.classList.remove(...STATES);
+            if (nextState !== "default") {
+                button.classList.add(nextState);
             }
 
-            // Toggle button classes
-            subjectButton.classList.add('present');
-            subjectButton.classList.remove('absent');
+            const recordIndex = attendanceRecordsArray.findIndex(record => record.studentId === studentId && record.subject === subject);
+            if (recordIndex !== -1) {
+                if (nextState === "default") {
+                    attendanceRecordsArray.splice(recordIndex, 1);
+                } else {
+                    attendanceRecordsArray[recordIndex].status = nextState;
+                }
+            } else if (nextState !== "default") {
+                attendanceRecordsArray.push({ studentId, subject, status: nextState });
+            }
 
-            // Update attendance records display
-            updateAttendanceRecords();
+            updateAttendanceTable();
         }
 
-        // Function to update attendance records display
-        function updateAttendanceRecords() {
+        function updateAttendanceTable() {
             const recordsMap = attendanceRecordsArray.reduce((acc, record) => {
                 if (!acc[record.studentId]) {
                     acc[record.studentId] = {};
@@ -270,16 +253,19 @@
             attendanceTableBody.innerHTML = Object.entries(recordsMap).map(([studentId, subjects]) => `
                 <tr>
                     <td>${studentId}</td>
-                    <td class="${subjects.Java === 'present' ? 'present' : 'absent'}">${subjects.Java || 'absent'}</td>
-                    <td class="${subjects.DSA === 'present' ? 'present' : 'absent'}">${subjects.DSA || 'absent'}</td>
-                    <td class="${subjects.OS === 'present' ? 'present' : 'absent'}">${subjects.OS || 'absent'}</td>
-                    <td class="${subjects.Math === 'present' ? 'present' : 'absent'}">${subjects.Math || 'absent'}</td>
-                    <td class="${subjects.DBMS === 'present' ? 'present' : 'absent'}">${subjects.DBMS || 'absent'}</td>
+                    <td class="${subjects.Java || ''}">${subjects.Java ? capitalize(subjects.Java) : 'N/A'}</td>
+                    <td class="${subjects.DSA || ''}">${subjects.DSA ? capitalize(subjects.DSA) : 'N/A'}</td>
+                    <td class="${subjects.OS || ''}">${subjects.OS ? capitalize(subjects.OS) : 'N/A'}</td>
+                    <td class="${subjects.Math || ''}">${subjects.Math ? capitalize(subjects.Math) : 'N/A'}</td>
+                    <td class="${subjects.DBMS || ''}">${subjects.DBMS ? capitalize(subjects.DBMS) : 'N/A'}</td>
                 </tr>
             `).join('');
         }
 
-        // Initialize student rows
+        function capitalize(str) {
+            return str.charAt(0).toUpperCase() + str.slice(1);
+        }
+
         generateStudentRows();
     </script>
 </body>
