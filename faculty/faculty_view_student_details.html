@@ -1,12 +1,9 @@
-<!-- view_student_details.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>View Student Details</title>
-    <link rel="shortcut icon" href="src/cit.png" type="image/png">
-    <link rel="stylesheet" href="facultystyles.css">
+    <title>Faculty View Students</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -15,8 +12,8 @@
             padding: 0;
         }
         .container {
-            width: 80%;
-            max-width: 800px;
+            width: 90%;
+            max-width: 1000px;
             margin: 20px auto;
             padding: 20px;
             background-color: #ffffff;
@@ -26,27 +23,31 @@
             text-align: center;
             color: #333333;
         }
-        .form-group {
-            margin-bottom: 15px;
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
         }
-        label {
-            display: block;
-            font-weight: bold;
-        }
-        input[type="text"],
-        input[type="number"],
-        select {
+        table th, table td {
+            border: 1px solid #ddd;
             padding: 10px;
-            font-size: 14px;
+            text-align: left;
+        }
+        table th {
+            background-color: #f4f4f4;
+        }
+        input[type="text"] {
+            width: 100%;
+            box-sizing: border-box;
             border: 1px solid #ddd;
             border-radius: 4px;
-            width: 100%;
+            padding: 5px;
         }
         button {
             padding: 10px 20px;
-            font-size: 14px;
+            margin-top: 20px;
             background-color: #4CAF50;
-            color: #ffffff;
+            color: white;
             border: none;
             border-radius: 4px;
             cursor: pointer;
@@ -58,85 +59,88 @@
 </head>
 <body>
     <div class="container">
-        <h1>View Student Details</h1>
-        <form id="student-details-form" onsubmit="updateStudentDetails(event)">
-            <div class="form-group">
-                <label for="student-id">Student ID</label>
-                <input type="text" id="student-id" name="student-id" readonly>
-            </div>
-            <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text" id="name" name="name">
-            </div>
-            <div class="form-group">
-                <label for="department">Department</label>
-                <select id="department" name="department">
-                    <option value="math">Math</option>
-                    <option value="java">Java</option>
-                    <option value="python">Python</option>
-                    <option value="dsa">DSA</option>
-                    <option value="dbms">DBMS</option>
-                    <option value="os">OS</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="year">Year</label>
-                <input type="number" id="year" name="year">
-            </div>
-            <div class="form-group">
-                <label for="attendance">Attendance</label>
-                <input type="number" id="attendance" name="attendance">
-            </div>
-            <div class="form-group">
-                <label for="marks">Marks</label>
-                <input type="number" id="marks" name="marks">
-            </div>
-            <button type="submit">Save Changes</button>
-        </form>
+        <h1>Student List</h1>
+        <table id="students-table">
+            <thead>
+                <tr>
+                    <th>Student ID</th>
+                    <th>Name</th>
+                    <th>Department</th>
+                    <th>Year</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>001</td>
+                    <td contenteditable="true">John Doe</td>
+                    <td contenteditable="true">Math</td>
+                    <td contenteditable="true">2nd Year</td>
+                </tr>
+                <tr>
+                    <td>002</td>
+                    <td contenteditable="true">Jane Smith</td>
+                    <td contenteditable="true">Java</td>
+                    <td contenteditable="true">3rd Year</td>
+                </tr>
+                <tr>
+                    <td>003</td>
+                    <td contenteditable="true">Alex Johnson</td>
+                    <td contenteditable="true">Python</td>
+                    <td contenteditable="true">1st Year</td>
+                </tr>
+                <tr>
+                    <td>004</td>
+                    <td contenteditable="true">Emily Davis</td>
+                    <td contenteditable="true">DSA</td>
+                    <td contenteditable="true">2nd Year</td>
+                </tr>
+                <tr>
+                    <td>005</td>
+                    <td contenteditable="true">Michael Brown</td>
+                    <td contenteditable="true">DBMS</td>
+                    <td contenteditable="true">3rd Year</td>
+                </tr>
+                <tr>
+                    <td>006</td>
+                    <td contenteditable="true">Sarah Wilson</td>
+                    <td contenteditable="true">OS</td>
+                    <td contenteditable="true">1st Year</td>
+                </tr>
+            </tbody>
+        </table>
+        <button id="save-changes">Save Changes</button>
     </div>
 
     <script>
-        function getStudentDetails(studentId) {
-            // Function to fetch student details (mock data for demonstration)
-            const students = [
-                { id: '001', name: 'John Doe', department: 'Math', year: 2, attendance: 95, marks: 85 },
-                { id: '002', name: 'Jane Smith', department: 'Java', year: 3, attendance: 88, marks: 92 },
-                { id: '003', name: 'Alex Johnson', department: 'Python', year: 1, attendance: 90, marks: 87 },
-                // more students
-            ];
-
-            const student = students.find(student => student.id === studentId);
-            if (student) {
-                document.getElementById('student-id').value = student.id;
-                document.getElementById('name').value = student.name;
-                document.getElementById('department').value = student.department;
-                document.getElementById('year').value = student.year;
-                document.getElementById('attendance').value = student.attendance;
-                document.getElementById('marks').value = student.marks;
+        // Load students from localStorage on page load
+        window.onload = function () {
+            const savedStudents = localStorage.getItem('students');
+            if (savedStudents) {
+                const tableBody = document.querySelector('#students-table tbody');
+                tableBody.innerHTML = JSON.parse(savedStudents).map(student => `
+                    <tr>
+                        <td>${student.id}</td>
+                        <td contenteditable="true">${student.name}</td>
+                        <td contenteditable="true">${student.department}</td>
+                        <td contenteditable="true">${student.year}</td>
+                    </tr>
+                `).join('');
             }
-        }
+        };
 
-        function updateStudentDetails(event) {
-            event.preventDefault();
+        // Save changes to localStorage
+        document.getElementById('save-changes').addEventListener('click', function () {
+            const rows = document.querySelectorAll('#students-table tbody tr');
+            const students = Array.from(rows).map(row => ({
+                id: row.children[0].textContent,
+                name: row.children[1].textContent,
+                department: row.children[2].textContent,
+                year: row.children[3].textContent,
+            }));
 
-            const studentId = document.getElementById('student-id').value;
-            const name = document.getElementById('name').value;
-            const department = document.getElementById('department').value;
-            const year = document.getElementById('year').value;
-            const attendance = document.getElementById('attendance').value;
-            const marks = document.getElementById('marks').value;
-
-            // Save updated student details to database (mock function call)
-            console.log('Updated Student Details:', { studentId, name, department, year, attendance, marks });
-
-            alert('Student details updated successfully!');
-        }
-
-        // Assuming student ID is passed via URL parameters (for demonstration)
-        const studentId = new URLSearchParams(window.location.search).get('id');
-        if (studentId) {
-            getStudentDetails(studentId);
-        }
+            localStorage.setItem('students', JSON.stringify(students));
+            alert('Changes saved successfully!');
+        });
     </script>
 </body>
 </html>
